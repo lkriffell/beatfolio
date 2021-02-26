@@ -25,12 +25,5 @@ RSpec.describe User, type: :model do
         expect(@user.image).to eq(created_user.image)
       end
     end
-
-    describe 'sad paths' do
-      # it 'cannot be created with non unique username' do 
-      #   failed_user = create :user, username: @user.username
-      #   require 'pry'; binding.pry
-      # end
-    end
   end
 end
