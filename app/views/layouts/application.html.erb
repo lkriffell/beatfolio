@@ -16,6 +16,9 @@
         <%= link_to current_user.username, user_path(current_user) %>
     <% end %>
   </nav>
+  <% flash.each do |type, message| %>
+    <p><%= message %></p>
+  <% end %>
 
   <body>
     <%= yield %>
