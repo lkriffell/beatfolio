@@ -8,10 +8,10 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Welcome, #{@user.username}!"
-      redirect_to user_path(user)
+      redirect_to users_path(user)
     else
-      generate_flash(@user)
-      render :new
+      flash[:notice] = "Something went wrong, did you fill out all fields?"
+      redirect_to users_new_path
     end
   end
 
