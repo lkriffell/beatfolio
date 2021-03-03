@@ -18,9 +18,13 @@ class UsersController < ApplicationController
   def new; end
 
   def show
-    @user = User.find(params[:id])
-    @follower_count = @user.followers.size
-    @following_count = @user.following.size
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+      @follower_count = @user.followers.size
+      @following_count = @user.following.size
+    else 
+      flash[:notice] = "It appears the user you're looking for does not exist"
+    end
   end
 
   private
