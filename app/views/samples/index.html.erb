@@ -1,0 +1,11 @@
+<h1>Looperman Top Samples of the Day</h1><br>
+<% @samples.each do |sample| %>
+  <% cache sample do %>
+    <a href=<%= sample.url %>><%= sample.title %></a>
+    <ul>
+      <li><%= sample.bpm %></li>
+      <li>Key: <%= sample.key %></li>
+      <li>Downloads: <%= sample.download_count %></li>
+    </ul>
+  <% end %>
+<% end %>
