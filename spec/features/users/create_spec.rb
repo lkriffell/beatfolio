@@ -1,6 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe 'user' do
+RSpec.describe 'user create' do
+  before :each do 
+    User.delete_all
+  end
+  
   describe 'happy paths' do
     it 'can be registered' do
       visit users_new_path
