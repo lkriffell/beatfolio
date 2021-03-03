@@ -1,13 +1,24 @@
 <% if @user %>
-  <h2><%= @user.username %> </h2>
+<div class="profile">
   <%= image_tag @user.image %><br>
-  Followers: <%= @follower_count %>
-  Following: <%= @following_count %>
+  <ul>
+    <h2><%= @user.username %></h2>
+    <li>Followers: <%= @follower_count %></li>
+    <li>Following: <%= @following_count %></li>
+    <li>Joined: <%= @user.created_at.strftime("%B %d %Y") %></li>
+  </ul>
+</div>
 
   <% if @user.beats %>
-    <h3> Beats </h3>
-    <% @user.beats.each do |beat| %>
-      <li><%= beat.name %></li>
-    <% end %>
+    <div class='user-tracks'>
+      <h3><%= @user.username %>'s Tracks </h3>
+      <div class='tracks'>
+        <% @user.beats.each do |beat| %>
+        <div class='track'>
+          <li><%= beat.name %></li>
+        </div>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 <% end %>
