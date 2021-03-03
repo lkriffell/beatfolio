@@ -24,7 +24,11 @@ body {
 .right {
   margin: 0;
   position: absolute;
-  right: 5%;
+  right: 0%;
+}
+
+.right img {
+  width: 12.5%;
 }
 
 .left {
@@ -101,5 +105,20 @@ body {
 // PROFILE
 
 img {
+  max-width: 100%;
+  height: auto;
   border-radius: 50%;
+}
+
+ul {
+  column-count: 1;
+  column-rule: dotted 1px #333;
+  list-style-type: none;
+}
+
+.user-tracks{
+  margin: 0;
+  position: absolute;
+  left: 30%;
+  top: 15%;
 }
