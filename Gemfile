@@ -35,6 +35,7 @@ group :development, :test do
   gem 'pry'
   gem 'simplecov'
   gem 'shoulda-matchers'
+  gem 'bootstrap', '~> 5.0.0.beta2'
 end
 
 group :test do
