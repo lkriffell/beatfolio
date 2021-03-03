@@ -9,7 +9,7 @@ RSpec.describe 'user show' do
       expect(page).to have_content("Billy Joel")
       expect(page).to have_content("Followers: 4")
       expect(page).to have_content("Following: 0")
-      expect(page).to have_content("Beats")
+      expect(page).to have_content("Billy Joel's Tracks")
       expect(page).to have_content(user.beats.first.name)
       expect(page).to have_content(user.beats.last.name)
     end
