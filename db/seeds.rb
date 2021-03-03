@@ -1,7 +1,8 @@
 require 'factory_bot_rails'
 require 'faker'
 
-main_user = FactoryBot.create(:user)
+User.delete_all
+main_user = FactoryBot.create(:user, username: 'Billy Joel', email: 'BillJ@gmail.com')
 follower1 = FactoryBot.create(:user)
 follower2 = FactoryBot.create(:user)
 follower3 = FactoryBot.create(:user)
