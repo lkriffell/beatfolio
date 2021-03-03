@@ -17,23 +17,26 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#"><%= button_to 'Discover', '/discover', method: 'get' %></a>
         </li>
-      </div>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+    </div>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
       <div class="right">
         <div class="dropdown">
           <button class="dropbtn">Profile</button>
           <div class="dropdown-content">
             <% if current_user %>
-              <a href="#"><%= link_to 'Log Out', logout_path %></a>
               <a href="#"><%= link_to current_user.username, "/users/#{current_user.id}" %></a>
+              <a href="#"><%= link_to 'Log Out', logout_path %></a>
             <% else %>
-              <a href="#"><%= link_to 'Register', users_new_path unless current_user %></a>
-              <a href="#"><%= link_to 'Log In', login_path unless current_user %></a>
+              <a href="#"><%= link_to 'Register', users_new_path %></a>
+              <a href="#"><%= link_to 'Log In', login_path %></a>
             <% end %>
           </div>
+          <% if current_user %>
+            <a href="#"><%= image_tag current_user.image %></a>
+          <% end %>
         </div>
       </div>
       </li>
