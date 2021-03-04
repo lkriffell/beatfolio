@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:follow, :unfollow]
+
   def index
     @users = User.all
   end
@@ -22,9 +24,25 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @follower_count = @user.followers.size
       @following_count = @user.following.size
+      if current_user
+        @own_page = true if @user == current_user
+        @following = true if current_user.following.exists?(user_id: @user.id)
+      end
     else 
       flash[:notice] = "It appears the user you're looking for does not exist"
     end
+  end
+
+  def follow
+    if User.exists?(params[:id])
+      UserFollow.create(user_id: params[:id], follower_id: current_user.id)
+    end
+    redirect_to "/users/#{params[:id]}"
+  end
+
+  def unfollow
+    current_user.following.find_by(user_id: params[:id]).delete
+    redirect_to "/users/#{params[:id]}"
   end
 
   private
