@@ -11,19 +11,19 @@ class SamplesController < ApplicationController
     doc = Nokogiri::HTML(data)
     doc.css("div#body-content").css("div div.player-wrapper").each do |sample_bundle|
       #instantiates new sample and provides it with scraped attributes
-          the_sample = Sample.new
-          the_sample.creator = sample_bundle.css(".player-sub-title").css(".icon-user").text
-          the_sample.title = sample_bundle.css(".player-title").text
-          the_sample.url = sample_bundle.attributes['rel'].value
-          the_sample.download_count = sample_bundle.css("div .player-stats-wrapper").css(".stats-downloads").text
+      creator = sample_bundle.css(".player-sub-title").css(".icon-user").text
+      title = sample_bundle.css(".player-title").text
+      url = sample_bundle.attributes['rel'].value
+      download_count = sample_bundle.css("div .player-stats-wrapper").css(".stats-downloads").text
       #instantiates a new sample and establishes sample-creator relationship
-          # sample_creator = Creator.new
-          # the_sample.creator = sample_creator
+      # sample_creator = Creator.new
+      # the_sample.creator = sample_creator
       #dives into the sample's url to retrieve "bpm" and "key" tags
-          url = sample_bundle.css("div .player-stats-wrapper").css("a").attr("href").text
-          sample_page = Nokogiri::HTML(open(url))
-          the_sample.bpm = sample_page.css("div .tag-wrapper a").text.match(/\d\d\d\s(bpm)/).to_s
-          the_sample.key = sample_page.css("div .tag-wrapper a").text.match(/(Key)\s[:]\s\w/).to_s
+      url = sample_bundle.css("div .player-stats-wrapper").css("a").attr("href").text
+      sample_page = Nokogiri::HTML(open(url))
+      bpm = sample_page.css("div .tag-wrapper a").text.match(/\d\d\d\s(bpm)/).to_s
+      key = sample_page.css("div .tag-wrapper a").text.match(/(Key)\s[:]\s\w/).to_s
+      the_sample = Sample.new(title, key, download_count, url, creator, bpm)
       #makes key either "unknown" or single letter
             if the_sample.key == "Key : U"
               the_sample.key = "Key unknown"
