@@ -3,8 +3,16 @@
   <%= image_tag @user.image %><br>
   <ul>
     <h2><%= @user.username %></h2>
-    <li>Followers: <%= @follower_count %></li>
-    <li>Following: <%= @following_count %></li>
+    <% if @own_page %>
+      <li>Followers: <%= @follower_count %></li>
+      <li>Following: <%= @following_count %></li>
+    <% elsif @following %>
+      <li>Followers: <%= @follower_count %> <%= button_to "Unfollow", "/users/#{@user.id}/unfollow" %></li>
+      <li>Following: <%= @following_count %></li>
+    <% else %>
+      <li>Followers: <%= @follower_count %> <%= button_to "Follow", "/users/#{@user.id}/follow" %></li>
+      <li>Following: <%= @following_count %></li>
+    <% end %>
     <li>Joined: <%= @user.created_at.strftime("%B %d %Y") %></li>
   </ul>
 </div>
