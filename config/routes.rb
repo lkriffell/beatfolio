@@ -8,13 +8,15 @@ Rails.application.routes.draw do
   # Beats
   get '/beats/new', to: 'beats#new'
   post '/beats/new', to: 'beats#create'
-  get 'beats/:id', to: 'beats#show'
+  get '/beats/:id', to: 'beats#show'
 
   # Users
   get '/users', to: 'users#index'
   get '/users/new', to: 'users#new'
   post '/users/new', to: 'users#create'
   get '/users/:id', to: 'users#show'
+  post '/users/:id/follow', to: 'users#follow'
+  post '/users/:id/unfollow', to: 'users#unfollow'
   
   # sessions
   get '/login', to: 'sessions#new'
