@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   # Samples
   get '/samples', to: 'samples#index'
 
+  # Beats
+  get '/beats/new', to: 'beats#new'
+  post '/beats/new', to: 'beats#create'
+  get 'beats/:id', to: 'beats#show'
+
   # Users
   get '/users', to: 'users#index'
   get '/users/new', to: 'users#new'
