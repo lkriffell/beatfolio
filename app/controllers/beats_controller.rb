@@ -1,15 +1,19 @@
 class BeatsController < ApplicationController
-  before_action require: :user
+  before_action :logged_in_user, only: [:new, :create]
+  
   def new; end
 
   def create
     @beat = current_user.beats.create(name: beat_params[:name])
     if @beat.save
       beat_params[:tags].split(',').each do |tag|
-        @beat.beat_tags.create(tag: tag)
+        @beat.beat_tags.create(tag: tag.strip)
       end
+      redirect_to "/beats/#{@beat.id}"
+    else
+      flash[:notice] = "Something went wrong, did you fill out all fields?"
+      redirect_to "/beats/new"
     end
-    redirect_to "/beats/#{@beat.id}"
   end
 
   def show
