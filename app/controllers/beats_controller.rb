@@ -4,9 +4,9 @@ class BeatsController < ApplicationController
   def new; end
 
   def create
-    @beat = current_user.beats.create(name: beat_params[:name])
+    @beat = current_user.beats.create(beat_params)
     if @beat.save
-      beat_params[:tags].split(',').each do |tag|
+      params[:tags].split(',').each do |tag|
         @beat.beat_tags.create(tag: tag.strip)
       end
       redirect_to "/beats/#{@beat.id}"
@@ -23,6 +23,6 @@ class BeatsController < ApplicationController
   private
 
   def beat_params
-    params.require(:beat).permit(:name, :image, :tags)
+    params.require(:beat).permit(:name, :image, :description)
   end
 end
