@@ -12,12 +12,12 @@ class SamplesController < ApplicationController
     doc.css("div#body-content").css("div div.player-wrapper").each do |sample_bundle|
       #instantiates new sample and provides it with scraped attributes
           the_sample = Sample.new
+          the_sample.creator = sample_bundle.css(".player-sub-title").css(".icon-user").text
           the_sample.title = sample_bundle.css(".player-title").text
           the_sample.url = sample_bundle.attributes['rel'].value
           the_sample.download_count = sample_bundle.css("div .player-stats-wrapper").css(".stats-downloads").text
       #instantiates a new sample and establishes sample-creator relationship
           # sample_creator = Creator.new
-          # sample_creator.name = sample_bundle.css(".player-sub-title").css(".icon-user").text
           # the_sample.creator = sample_creator
       #dives into the sample's url to retrieve "bpm" and "key" tags
           url = sample_bundle.css("div .player-stats-wrapper").css("a").attr("href").text
