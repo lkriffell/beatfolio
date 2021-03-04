@@ -16,11 +16,12 @@
             <button class="dropbtn" type="submit">Home</button>
           </form>
         </li>
-        <li class="nav-item" style="padding-left:5px">
+        <li class="nav-item" style="padding-left:20px">
           <form action="/samples" method="get">
             <button class="dropbtn" type="submit">Samples</a>
           </form>
         </li>
+      </ul>
     </div>
     <form class="d-flex">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -29,22 +30,30 @@
       <div class="right">
         <div class="dropdown">
           <% if current_user %>
-            <button class="dropbtn"><%= image_tag current_user.image %></button>
+            <button class="dropbtn drop"><%= image_tag current_user.image %></button>
+            <div class="dropdown-content">
+                <a href="#"><%= link_to current_user.username, "/users/#{current_user.id}" %></a>
+                <a href="#"><%= link_to 'Log Out', logout_path %></a>
+            </div>
+          <% else %>
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item" style="padding-right: 20px">
+                <form action="/users/new" method="get">
+                  <button class="dropbtn" type="submit">Register</button>
+                </form>
+              </li>
+              <li class="nav-item">
+                <% if !current_page?('/login') %>
+                  <form action="/login" method="get">
+                    <button class="dropbtn" type="submit">Log In</button>
+                  </form>
+                <% end %>
+              </li>
+            </ul>
           <% end %>
-          <div class="dropdown-content">
-            <% if current_user %>
-              <a href="#"><%= link_to current_user.username, "/users/#{current_user.id}" %></a>
-              <a href="#"><%= link_to 'Log Out', logout_path %></a>
-            <% else %>
-              <a href="#"><%= link_to 'Register', users_new_path %></a>
-              <a href="#"><%= link_to 'Log In', login_path %></a>
-            <% end %>
-          </div>
           
         </div>
       </div>
-      </li>
-    </ul>
   </nav>
   <% flash.each do |type, message| %>
     <p><%= message %></p>
