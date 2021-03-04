@@ -113,6 +113,12 @@ ul {
   list-style-type: none;
 }
 
+.tags ul{
+  column-count: 5;
+  column-rule: none;
+  list-style-type: lao;
+}
+
 .user-tracks{
   margin: 0;
   position: absolute;
