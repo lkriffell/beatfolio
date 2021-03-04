@@ -33,18 +33,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def follow
-    if User.exists?(params[:id])
-      UserFollow.create(user_id: params[:id], follower_id: current_user.id)
-    end
-    redirect_to "/users/#{params[:id]}"
-  end
-
-  def unfollow
-    current_user.following.find_by(user_id: params[:id]).delete
-    redirect_to "/users/#{params[:id]}"
-  end
-
   private
 
   def user_params

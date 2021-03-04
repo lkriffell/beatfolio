@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   get '/users/new', to: 'users#new'
   post '/users/new', to: 'users#create'
   get '/users/:id', to: 'users#show'
-  post '/users/:id/follow', to: 'users#follow'
-  post '/users/:id/unfollow', to: 'users#unfollow'
+
+  # UserFollows
+  post '/users/:id/follow', to: 'user_follows#create'
+  post '/users/:id/unfollow', to: 'user_follows#destroy'
   
   # sessions
   get '/login', to: 'sessions#new'
