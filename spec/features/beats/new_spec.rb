@@ -19,6 +19,7 @@ RSpec.describe 'beat' do
       fill_in 'beat_name', with: 'Dope Beat'
       fill_in 'beat_image', with: 'This pic'
       fill_in 'beat_tags', with: 'cool, hip, hop, rap'
+      fill_in 'beat_description', with: 'a dope beat I made'
 
       click_button('Save Beat')
 
@@ -26,6 +27,9 @@ RSpec.describe 'beat' do
       beat = Beat.last
 
       expect(current_path).to eq("/beats/#{beat.id}")
+
+      expect(beat.description).to eq('a dope beat I made')
+      expect(beat.image).to eq('This pic')
 
       expect(beat.beat_tags.size).to eq(4)
       expect(beat.beat_tags[0].tag).to eq('cool')

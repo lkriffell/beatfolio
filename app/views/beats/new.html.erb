@@ -1,6 +1,7 @@
 <%= form_for :beat do |form| %>
     title: <%= form.text_field :name %>
     image: <%= form.text_field :image %>
+    description: <%= form.text_area :description %>
     tags: (seperate with a comma) <%= form.text_field :tags %>
     <%= form.submit %>
 <% end %>

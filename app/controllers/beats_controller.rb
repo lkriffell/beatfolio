@@ -6,8 +6,10 @@ class BeatsController < ApplicationController
   def create
     @beat = current_user.beats.create(beat_params)
     if @beat.save
-      params[:tags].split(',').each do |tag|
-        @beat.beat_tags.create(tag: tag.strip)
+      if params[:beat][:tags]
+        params[:beat][:tags].split(',').each do |tag|
+          @beat.beat_tags.create(tag: tag.strip)
+        end
       end
       redirect_to "/beats/#{@beat.id}"
     else
