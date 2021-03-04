@@ -17,7 +17,7 @@ RSpec.describe 'session' do
       click_link("Log Out")
       
       expect(current_path).to eq('/')
-      expect(page).to have_link("Log In")
+      expect(page).to have_button("Log In")
     end
   end
   describe 'sad paths' do
