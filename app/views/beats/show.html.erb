@@ -1,0 +1,17 @@
+<% if @beat %>
+  <div class='track'>
+    <h3><%= @beat.name %></h3>
+    <h3>Producer: <%= @beat.user.username %></h3>
+      <% if @beat.beat_tags %>
+      <div class='tags'>
+        <ul>
+        <% @beat.beat_tags.each do |tag| %>
+            <li><%= tag.tag %></li>
+        <% end %>
+        </ul>
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
