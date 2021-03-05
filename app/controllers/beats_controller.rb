@@ -25,6 +25,6 @@ class BeatsController < ApplicationController
   private
 
   def beat_params
-    params.require(:beat).permit(:name, :image, :description)
+    params.require(:beat).permit(:name, :image, :description, :audio)
   end
 end

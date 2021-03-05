@@ -36,6 +36,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'shoulda-matchers'
   gem 'bootstrap', '~> 5.0.0.beta2'
+  gem "paperclip", "~> 6.0.0"
 end
 
 group :test do
