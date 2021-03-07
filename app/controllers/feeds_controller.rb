@@ -13,4 +13,15 @@ class FeedsController < ApplicationController
     end
     @beats.sort_by { |beat| beat.created_at }
   end
+
+  def index
+    @beats = nil
+    if current_user
+      following_ids = current_user.following.select('user_id')
+      @beats = Beat.where.not(user_id: current_user.id)
+                   .where.not(user_id: following_ids)
+    else
+      @beats = Beat.all
+    end
+  end
 end
