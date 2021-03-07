@@ -19,20 +19,39 @@
 
   <% if @user.beats %>
     <div class='user-tracks'>
-      <h3><%= @user.username %>'s Tracks </h3>
+      <h3><%= @user.username %>'s Tracks </h3><br>
       <div class='tracks'>
         <% @user.beats.each do |beat| %>
-        <div class='track'>
-          <li><%= beat.name %></li>
-        </div>
-        <div class='tags'>
-          <% if beat.beat_tags %>
-            <ul>
-            <% beat.beat_tags.each do |tag| %>
-                <li><%= tag.tag %></li>
-            <% end %>
-            </ul>
-          <% end %>
+          <div class='track'>
+            <div class="row" data-masonry="{&quot;percentPosition&quot;: true }" style="position: relative; height: 1879px;">
+              <div class="col-sm-6 col-lg-4 mb-4">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= beat.name %></h5>
+                    <audio class='audio' controls>
+                      <source src=<%=beat.audio.url%>/>
+                    </audio>
+                    <ul>
+                      <li class="card-text"><%= beat.description %></li>
+                      <li class="card-text">Producer: <%= @user.username %></li>
+                    </ul>
+                    <% if beat.beat_tags.size > 0 %>
+                        <div class='dropdown'>
+                          <button class="dropbtn drop" style="width:100%">Tags</button>
+                            <div class="dropdown-content">
+                              <ul>
+                                <% beat.beat_tags.each do |tag| %>
+                                  <li href="#"><%= link_to tag.tag, "/search?#{tag.tag}" %></li>
+                                <% end %>
+                              </ul>
+                            </div>
+                        </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <% end %>
       </div>
