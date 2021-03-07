@@ -13,7 +13,7 @@ class SamplesController < ApplicationController
       #instantiates new sample and provides it with scraped attributes
       creator = sample_bundle.css(".player-sub-title").css(".icon-user").text
       title = sample_bundle.css(".player-title").text
-      url = sample_bundle.attributes['rel'].value
+      audio_url = sample_bundle.attributes['rel'].value
       download_count = sample_bundle.css("div .player-stats-wrapper").css(".stats-downloads").text
       #instantiates a new sample and establishes sample-creator relationship
       # sample_creator = Creator.new
@@ -23,7 +23,7 @@ class SamplesController < ApplicationController
       sample_page = Nokogiri::HTML(open(url))
       bpm = sample_page.css("div .tag-wrapper a").text.match(/\d\d\d\s(bpm)/).to_s
       key = sample_page.css("div .tag-wrapper a").text.match(/(Key)\s[:]\s\w/).to_s
-      the_sample = Sample.new(title, key, download_count, url, creator, bpm)
+      the_sample = Sample.new(title, key, download_count, url, audio_url, creator, bpm)
       #makes key either "unknown" or single letter
             if the_sample.key == "Key : U"
               the_sample.key = "Key unknown"
