@@ -1,0 +1,59 @@
+<center>
+  <div class="btn-group" role="toolbar" aria-label="Basic example">
+    <form action="/feed" method="get">
+      <button type="submit" class="dropbtn drop">Your Feed</button>
+    </form>
+
+    <form action="/samples" method="get">
+      <button type="submit" class="dropbtn drop">Samples</button>
+    </form>
+
+    <form action="/discover" method="get">
+      <button type="submit" class="dropbtn drop">Discover</button>
+    </form>
+  </div>
+</center><br>
+
+<% if @beats %>
+<center>
+  <section class="feed-card-list">
+  <% @beats.each do |beat| %>
+    <article class="disabled-hover-card">
+      <header class="card-header">
+        <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
+        <h5>
+          <form action=<%="/beats/#{beat.id}"%> method="get">
+            <button class="dropbtn logo" type="submit"><%= beat.name %></button>
+          </form>
+        </h5>
+      </header>
+
+      <audio class='audio' controls>
+        <source src=<%=beat.audio.url%>/>
+      </audio>
+
+      <div class="info">
+        <form action=<%="/users/#{beat.user.id}"%> method="get">
+          <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
+        </form>
+        <p class="card-text"><%= beat.description %></p>
+      </div>
+
+      <% if beat.beat_tags.size > 0 %>
+          <div class='dropdown'>
+            <button class="dropbtn drop" style="width:100%">Tags</button>
+              <div class="dropdown-content">
+                <ul>
+                  <% beat.beat_tags.each do |tag| %>
+                    <li href="#"><%= link_to tag.tag, "/search?tag=#{tag.tag}" %></li>
+                  <% end %>
+                </ul>
+              </div>
+          </div>
+      <% end %>
+    </article>
+  <br>
+  <% end %>
+  </section>
+</center>
+<% end %>
