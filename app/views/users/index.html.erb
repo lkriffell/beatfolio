@@ -1,6 +1,19 @@
-<% @users.each do |user| %>
-  <%= user.username %><br>
-  <%= user.email %><br>
-  <%= image_tag user.image %>
-  <br><br>
-<% end %>
+<center>
+  <section class="profile-card-list">
+    <% @users.each do |user| %>
+      <article class="disabled-hover-card">
+        <header class="card-header">
+          <p>Member Since: <%= user.created_at.strftime("%B %d, %Y") %></p>
+          <h5>
+            <form action=<%="/users/#{user.id}"%> method="get">
+              <button class="dropbtn logo" type="submit"><%= user.username %></button>
+            </form>
+          </h5>
+        </header>
+        <div class="card-author">
+          <img src=<%= user.image %> />
+        </div>
+      </article>
+    <% end %>
+  </section>
+</center>
