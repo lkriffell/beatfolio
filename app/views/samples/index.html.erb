@@ -1,27 +1,26 @@
 <% num = 1 %>
-<h1>Looperman Top Samples of the Day</h1><br>
-  <div class="row" data-masonry="{&quot;percentPosition&quot;: true }" style="position: relative; height: 1879px;">
-    <div class="col-sm-6 col-lg-4 mb-4" style="position: absolute; left: 0%; top: 0px;">
-<% @samples.each do |sample| %>
-  <% cache sample do %>
-        <div class="card">
-          <%# <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg> %>
+<center>
+    <section class="card-list">
+      <h1>Looperman Top Samples of the Day</h1>
+        <% @samples.each do |sample| %>
+          <article class="card">
+            <header class="card-header">
+              <p><%= Date.today.strftime("%B %d, %Y") %></p>
+              <h5><%= num %> - <%= sample.title %></h5>
+            </header>
 
-          <div class="card-body">
-            <h5 class="card-title"><%= num %> - <%= sample.title %></h5>
-            <audio controls>
-              <source src=<%=sample.url%>/>
+            <div class="info">
+              <p>Creator: <%= sample.creator %></p>
+              <p>Downloads: <%= sample.download_count %></p>
+              <p><%= sample.bpm %></p>
+              <p>Key: <%= sample.key %></p>
+            </div>
+
+            <audio controls loop>
+              <source src=<%=sample.audio_url%>/>
             </audio>
-            <ul>
-              <li class="card-text">Created by: <%= sample.creator %></li>
-              <li class="card-text">Downloads: <%= sample.download_count %></li>
-              <li class="card-text"><%= sample.bpm %></li>
-              <li class="card-text">Key: <%= sample.key %></li>
-            </ul>
-          </div>
-        </div>
-  <% end %>
-  <% num += 1 %>
-<% end %>
-    </div>
-  </div>
+          </article>
+          <% num += 1 %>
+        <% end %>
+    </section>
+</center>
