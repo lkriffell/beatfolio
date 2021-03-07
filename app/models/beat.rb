@@ -7,4 +7,18 @@ class Beat < ApplicationRecord
 
   belongs_to :user, dependent: :destroy
   has_many :beat_tags
+
+  def self.related_beats(keyword)
+    related_beats = {}
+    keyword.split(' ').each do |tag|
+      related_beats[tag] = BeatTag.where("tag like ?", tag).select('beat_id')
+    end
+    related_beats.each do |keyword, ids|
+      related_beats[keyword] = []
+      ids.each do |id|
+        related_beats[keyword] << Beat.find(id.beat_id)
+      end
+    end
+    related_beats
+  end
 end
