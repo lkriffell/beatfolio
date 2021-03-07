@@ -8,24 +8,19 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-md fixed-top">
     <div class="left">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
           <form action="/" method="get">
-            <button class="dropbtn" type="submit">Home</button>
-          </form>
-        </li>
-        <li class="nav-item" style="padding-left:20px">
-          <form action="/samples" method="get">
-            <button class="dropbtn" type="submit">Samples</a>
+            <button class="dropbtn logo" type="submit"><%= image_tag "https://github.com/lkriffell/beatfolio/blob/main/app/assets/images/logo.png?raw=true" %></button>
           </form>
         </li>
       </ul>
     </div>
     <form class="d-flex">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
+      <button class="btn" type="submit">Search</button>
     </form>
       <div class="right">
         <div class="dropdown">
@@ -37,21 +32,15 @@
             </div>
           <% else %>
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="nav-item" style="padding-right: 20px">
-                <form action="/users/new" method="get">
-                  <button class="dropbtn" type="submit">Register</button>
-                </form>
-              </li>
               <li class="nav-item">
                 <% if !current_page?('/login') %>
                   <form action="/login" method="get">
-                    <button class="dropbtn" type="submit">Log In</button>
+                    <button class="dropbtn login" type="submit">Log In</button>
                   </form>
                 <% end %>
               </li>
             </ul>
           <% end %>
-          
         </div>
       </div>
   </nav>
