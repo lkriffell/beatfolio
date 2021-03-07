@@ -131,6 +131,16 @@ body {
 // PROFILE
 .profile-card-list {
   column-count: 3;
+}
+
+.profile-tracks {
+  position: absolute;
+  left: 35%;
+  top: 15%;
+}
+
+.feed-card-list {
+  column-count: 1;
 } 
 
 img {
@@ -149,14 +159,6 @@ ul {
   list-style-type: none;
 }
 
-.user-tracks{
-  margin: 0;
-  position: absolute;
-  left: 30%;
-  top: 15%;
-  width: 100%;
-}
-
 table, th, td {
   white-space: nowrap;
   display: -webkit-inline-box !important
@@ -165,7 +167,7 @@ table, th, td {
 // audio
 
 .audio {
-  color:#198754 !important
+  align-self: center;
 }
 
 // Samples cards
@@ -203,8 +205,7 @@ body {
     background: linear-gradient(90deg,#201c29,#201c29 1px,#17141d 0,#17141d);
 }
 
-
-.card {
+.card .card-no-hover {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -220,7 +221,7 @@ body {
 
 // Samples cards animations
 
-.card {
+.card .card-no-hover{
   border-radius: 16px;
   background: #17141d;
   box-shadow: -1rem 0 3rem #000;
@@ -254,10 +255,6 @@ body {
   box-shadow: -1rem 0 3rem #000;
 
   transition: .2s;
-}
-
-.disabled-hover-card:hover {
-  transform: translateY(-1rem);
 }
 
 // Samples Background Gradient
