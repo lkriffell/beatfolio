@@ -1,0 +1,111 @@
+<h1>Results for '<%= @search %>'</h1>
+<% if @beats != [] %>
+  <section class="card-list">
+  <h1><%= "beats matching '#{@search}'"%></h1>
+  <% @beats.each do |beat| %>
+    <article class="card">
+      <header class="card-header">
+        <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
+        <h5>
+          <form action=<%="/beats/#{beat.id}"%> method="get">
+            <button class="dropbtn logo" type="submit"><%= beat.name %></button>
+          </form>
+        </h5>
+      </header>
+
+      <audio class='audio' controls>
+        <source src=<%=beat.audio.url%>/>
+      </audio>
+
+      <div class="info">
+        <form action=<%="/users/#{beat.user.id}"%> method="get">
+          <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
+        </form>
+        <p class="card-text"><%= beat.description %></p>
+      </div>
+
+      <% if beat.beat_tags.size > 0 %>
+          <div class='dropdown'>
+            <button class="dropbtn drop" style="width:100%">Tags</button>
+              <div class="dropdown-content">
+                <ul>
+                  <% beat.beat_tags.each do |tag| %>
+                    <li href="#"><%= link_to tag.tag, "/search?#{tag.tag}" %></li>
+                  <% end %>
+                </ul>
+              </div>
+          </div>
+      <% end %>
+    </article>
+  <% end %>
+  </section>
+<% end %>
+
+<% if @related_beats %>
+  <% @related_beats.each do |keyword, beats| %>
+    <section class="card-list">
+    <% if beats != [] %>
+      <h1><%= "results for the tag '#{keyword}'"%></h1>
+    <% end %>
+    <% beats.each do |beat| %>
+      <article class="card">
+        <header class="card-header">
+          <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
+          <h5>
+            <form action=<%="/beats/#{beat.id}"%> method="get">
+              <button class="dropbtn logo" type="submit"><%= beat.name %></button>
+            </form>
+          </h5>
+        </header>
+
+        <audio class='audio' controls>
+          <source src=<%=beat.audio.url%>/>
+        </audio>
+
+        <div class="info">
+          <form action=<%="/users/#{beat.user.id}"%> method="get">
+            <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
+          </form>
+          <p class="card-text"><%= beat.description %></p>
+        </div>
+
+        <% if beat.beat_tags.size > 0 %>
+            <div class='dropdown'>
+              <button class="dropbtn drop" style="width:100%">Tags</button>
+                <div class="dropdown-content">
+                  <ul>
+                    <% beat.beat_tags.each do |tag| %>
+                      <li href="#"><%= link_to tag.tag, "/search?#{tag.tag}" %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            </div>
+        <% end %>
+      </article>
+    <% end %>
+    </section>
+  <% end %>
+<% end %>
+
+<% if @users != []%>
+  <center>
+    <section class="card-list">
+    <h1><%= "users matching '#{@search}'"%></h1>
+      <% @users.each do |user| %>
+        <article class="disabled-hover-card">
+          <header class="card-header">
+            <p>Member Since: <%= user.created_at.strftime("%B %d, %Y") %></p>
+            <h5>
+              <form action=<%="/users/#{user.id}"%> method="get">
+                <button class="dropbtn logo" type="submit"><%= user.username %></button>
+              </form>
+            </h5>
+          </header>
+          <div class="card-author">
+            <img src=<%= user.image %> />
+          </div>
+        </article>
+      <% end %>
+    </section>
+  </center>
+<% end %>
