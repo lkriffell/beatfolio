@@ -24,4 +24,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout'
+
+  # Feed
+  get '/feed', to: 'feeds#show'
 end
