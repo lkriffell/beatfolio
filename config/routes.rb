@@ -27,4 +27,8 @@ Rails.application.routes.draw do
 
   # Feed
   get '/feed', to: 'feeds#show'
+  get '/discover', to: 'feeds#index'
+
+  # Search
+  post '/search', to: 'search#show'
 end
