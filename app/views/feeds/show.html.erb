@@ -1,3 +1,19 @@
+<center>
+  <div class="btn-group" role="toolbar" aria-label="Basic example">
+    <form action="/feed" method="get">
+      <button type="submit" class="dropbtn drop">Your Feed</button>
+    </form>
+
+    <form action="/samples" method="get">
+      <button type="submit" class="dropbtn drop">Samples</button>
+    </form>
+
+    <form action="/discover" method="get">
+      <button type="submit" class="dropbtn drop">Discover</button>
+    </form>
+  </div>
+</center><br>
+
 <% if @beats %>
 <center>
   <section class="feed-card-list">
@@ -36,6 +52,7 @@
           </div>
       <% end %>
     </article>
+    <br>
   <% end %>
   </section>
 </center>
