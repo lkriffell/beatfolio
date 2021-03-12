@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get '/users/new', to: 'users#new'
   post '/users/new', to: 'users#create'
   get '/users/:id', to: 'users#show'
+  get '/users/:id/update', to: 'users#edit'
+  post '/users/:id/update', to: 'users#update'
 
   # UserFollows
   post '/users/:id/follow', to: 'user_follows#create'

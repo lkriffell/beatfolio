@@ -1,0 +1,7 @@
+<%= form_for @user, url: "/users/#{@user.id}/update", method: "post" do |form| %>
+    username: <%= form.text_field :username, :value => @user.username %>
+    email: <%= form.text_field :email, :value => @user.email %>
+    image: <%= form.text_field :image, :value => @user.image %>
+    password: <%= form.text_field :password %>
+    <%= form.submit "Update" %>
+<% end %>

@@ -33,6 +33,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user.save
+      redirect_to "/users/#{@user.id}"
+    else
+      flash[:notice] = 'Your profile information could not be saved'
+      redirect_to "/users/#{@user.id}/update"
+    end
+  end
+
   private
 
   def user_params
