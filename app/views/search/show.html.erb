@@ -1,5 +1,6 @@
 <h1>Results for '<%= @search %>'</h1>
-<% if @beats != [] %>
+
+<% if @beats.size > 0 %>
   <section class="card-list">
   <h1><%= "beats matching '#{@search}'"%></h1>
   <% @beats.each do |beat| %>
@@ -41,10 +42,10 @@
   </section>
 <% end %>
 
-<% if @related_beats %>
+<% if @related_beats.size > 0 %>
   <% @related_beats.each do |keyword, beats| %>
     <section class="card-list">
-    <% if beats != [] %>
+    <% if beats.size > 0 %>
       <h1><%= "results for the tag '#{keyword}'"%></h1>
     <% end %>
     <% beats.each do |beat| %>
@@ -87,7 +88,7 @@
   <% end %>
 <% end %>
 
-<% if @users != []%>
+<% if @users.size > 0 %>
   <center>
     <section class="card-list">
     <h1><%= "users matching '#{@search}'"%></h1>
