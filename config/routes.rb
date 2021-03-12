@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/beats/new', to: 'beats#new'
   post '/beats/new', to: 'beats#create'
   get '/beats/:id', to: 'beats#show'
+  get '/beats/:id/update', to: 'beats#edit'
+  post '/beats/:id/update', to: 'beats#update'
 
   # Users
   get '/users', to: 'users#index'

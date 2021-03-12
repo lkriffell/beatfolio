@@ -1,5 +1,5 @@
 class BeatsController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create]
+  before_action :logged_in_user, only: [:new, :create, :show]
   
   def new; end
 
@@ -20,6 +20,21 @@ class BeatsController < ApplicationController
 
   def show
     @beat = Beat.find(params[:id])
+  end
+
+def edit
+    @beat = Beat.find(params[:id])
+  end
+
+  def update
+    @beat = Beat.find(params[:id])
+    @beat.update(beat_params)
+    if @beat.save
+      redirect_to "/beats/#{@beat.id}"
+    else
+      flash[:notice] = 'Your information could not be saved'
+      redirect_to "/beats/#{@beat.id}/update"
+    end
   end
 
   private

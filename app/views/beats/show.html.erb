@@ -29,6 +29,10 @@
             </div>
           </div>
         </div>
-      <% end %>
+      <% end %><br>
+
+      <% if current_user.id == @beat.user_id %>
+        <%= link_to "Edit Track", "/beats/#{@beat.id}/update" %>
+      <% end %> 
   </center>
 <% end %>

@@ -1,0 +1,6 @@
+<%= form_for @beat, url: "/beats/#{@beat.id}/update", method: "post" do |form| %>
+    title: <%= form.text_field :name, value: @beat.name %>
+    image: <%= form.text_field :image, value: @beat.image  %>
+    description: <%= form.text_area :description, value: @beat.description  %>
+    <%= form.submit "Update" %>
+<% end %>
