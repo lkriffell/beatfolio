@@ -33,6 +33,7 @@
             <button class="dropbtn drop"><%= image_tag current_user.image %></button>
             <div class="dropdown-content">
                 <a href="#"><%= link_to current_user.username, "/users/#{current_user.id}" %></a>
+                <a href="#"><%= link_to 'Settings', "/users/#{current_user.id}/update" %></a>
                 <a href="#"><%= link_to 'Log Out', logout_path %></a>
             </div>
           <% else %>
