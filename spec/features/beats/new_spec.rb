@@ -37,17 +37,6 @@ RSpec.describe 'beat' do
       expect(beat.beat_tags[2].tag).to eq('hop')
       expect(beat.beat_tags[3].tag).to eq('rap')
     end
-    it 'can be seen by logged out users' do
-      click_link "Log Out"
-      user = User.first
-      beat = user.beats.create(name: "cool beat")
-      visit "beats/#{beat.id}"
-      
-      expect(page).to have_content("cool beat")
-      expect(page).to have_content(user.username)
-
-      expect(current_path).to eq("/beats/#{beat.id}")
-    end
   end
   describe 'sad paths' do
     it 'cannot be created without being logged in' do
