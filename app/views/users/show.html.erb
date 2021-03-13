@@ -4,14 +4,14 @@
   <ul>
     <h2><%= @user.username %></h2>
     <% if @own_page %>
-      <li>Followers: <%= @follower_count %></li>
-      <li>Following: <%= @following_count %></li>
+      <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %></li>
+      <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following"  %></li>
     <% elsif @following %>
-      <li>Followers: <%= @follower_count %> <%= button_to "Unfollow", "/users/#{@user.id}/unfollow" %></li>
-      <li>Following: <%= @following_count %></li>
+      <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %> <%= button_to "Unfollow", "/users/#{@user.id}/unfollow" %></li>
+      <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following" %></li>
     <% else %>
-      <li>Followers: <%= @follower_count %> <%= button_to "Follow", "/users/#{@user.id}/follow" %></li>
-      <li>Following: <%= @following_count %></li>
+      <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %> <%= button_to "Follow", "/users/#{@user.id}/follow" %></li>
+      <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following" %></li>
     <% end %>
     <li>Joined: <%= @user.created_at.strftime("%B %d %Y") %></li>
   </ul>
