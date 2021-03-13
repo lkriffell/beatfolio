@@ -4,3 +4,5 @@
     description: <%= form.text_area :description, value: @beat.description  %>
     <%= form.submit "Update" %>
 <% end %>
+
+<%= link_to 'Edit Tags', "beat/#{@beat.id}/tags/edit" %>
