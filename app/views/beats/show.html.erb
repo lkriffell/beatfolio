@@ -2,9 +2,9 @@
 
 <% if @beat %>
   <center>
-      <header class="card-header">
-        <p><%= @beat.created_at.strftime("%B %d, %Y") %></p>
-        <h5><%= @beat.name %></h5>
+      <header class="beat-show-header">
+        <p><%= @beat.created_at.strftime("%B %d, %Y") %></p><br>
+        <h5><%= @beat.name %></h5><br>
       </header>
 
       <audio class='audio' controls>
