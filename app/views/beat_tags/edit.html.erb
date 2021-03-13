@@ -6,7 +6,7 @@
   <% end %>
 
   <%= form_for :beat_tag, url: "/beats/#{@beat.id}/tags/edit", method: "post" do |form| %>
-      tag: <%= form.text_field :tag %>
+      <%= form.text_field :tag %>
       <%= form.hidden_field :beat_id, value: @beat.id  %>
       <%= form.submit "Add Tag" %>
   <% end %>
