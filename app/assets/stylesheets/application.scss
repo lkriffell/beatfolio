@@ -24,17 +24,6 @@ body {
 }
 
 // Nav
-
-.logo img {
-  width: 20%;
-  border-radius: 0% !important;
-  transition: box-shadow .3s;
-}
-
-.logo img:hover {
-  box-shadow: 0 0 11px rgba(33,33,33,.2); 
-}
-
 .right {
   margin: 0;
   position: absolute;
@@ -142,7 +131,7 @@ body {
 
 // PROFILE
 .profile-card-list {
-  column-count: 2;
+  column-count: 1;
   padding-top: 30px;
 }
 
@@ -295,16 +284,21 @@ table, th, td {
   font-size: 20px;
   margin: .25rem 0 auto;
   cursor: pointer;
+  background-image: linear-gradient(90deg,#ff8a00,#e52e71) !important;
+  border-radius: 5px;
+  width: 70%;
 }
 
 .card-header h5:hover {
-  background: linear-gradient(90deg,#ff8a00,#e52e71);
   text-shadow: none;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.beat-show-header h5{
+  fill: linear-gradient(90deg,#ff8a00,#e52e71) !important;
+}
 // Sample info
 
 .info {
@@ -318,12 +312,9 @@ table, th, td {
   font-style: normal;
   font-weight: 700;
   font-size: .5rem;
-  color: #7a7a8c;
+  color: #48425D;
   text-transform: uppercase;
   font-size: .66rem;
-  border: 3px solid #28242f;
-  border-radius: 2rem;
-  padding: .2rem .85rem .25rem;
   position: relative;
 }
 
@@ -370,5 +361,6 @@ body {
 		repeating-radial-gradient(circle at bottom left, $colors),
 		repeating-radial-gradient(circle at bottom right, $colors);
 	background-blend-mode: hue;
-	height: 200vh;
+	height: auto;
+  background-attachment: fixed;
 }
