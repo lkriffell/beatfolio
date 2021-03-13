@@ -19,7 +19,8 @@
       <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %></li>
       <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following" %></li>
     <% end %>
-    <li>Joined: <%= @user.created_at.strftime("%B %d %Y") %></li>
+    <li>Tracks Uploaded: <%= @user.beats.size %></li>
+    <li>Member Since: <%= @user.created_at.strftime("%B %d %Y") %></li>
   </ul>
 </div>
 
