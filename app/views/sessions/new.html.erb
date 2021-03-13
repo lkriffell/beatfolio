@@ -1,9 +1,13 @@
-<%= form_tag login_path do %>
-  <%= label_tag :email %>
-  <%= email_field_tag :email %>
+<center>
+  <%= form_tag login_path do %>
+    <%= label_tag :email %>
+    <%= email_field_tag :email %>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
 
-  <%= submit_tag 'Log In' %>
-<% end %>
+    <%= submit_tag 'Log In' %>
+  <% end %><br>
+
+  <p>New to Prod.by? <%= link_to "Register Here", "/users/new"%></p>
+</center>

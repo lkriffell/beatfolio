@@ -1,0 +1,25 @@
+<center>
+  <% if @followers.size > 0 %>
+    <h5><%= @followers.first.user.username %>'s Followers</h5>
+    <section class="profile-card-list">
+      <% @followers.each do |follow| %>
+      <% user = User.find(follow.follower_id) %>
+        <article class="disabled-hover-card">
+          <header class="card-header">
+            <p>Follower Since: <%= follow.created_at.strftime("%B %d, %Y") %></p>
+            <h5>
+              <form action=<%="/users/#{user.id}"%> method="get">
+                <button class="dropbtn logo" type="submit"><%= user.username %></button>
+              </form>
+            </h5>
+          </header>
+          <div class="card-author">
+            <img src=<%= user.image %> />
+          </div>
+        </article>
+      <% end %>
+    </section>
+  <% else %>
+    <h5>This user isn't followed by anyone yet!</h5>
+  <% end %>
+</center>
