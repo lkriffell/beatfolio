@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <% if @beat %>
   <center>
       <header class="card-header">
@@ -32,7 +34,14 @@
       <% end %><br>
 
       <% if current_user.id == @beat.user_id %>
-        <%= link_to "Edit Track", "/beats/#{@beat.id}/update" %>
+        <div class="button-list">
+          <form method="get" action=<%="/beats/#{@beat.id}/update"%>>
+            <button type="submit" class="btn"><i class="fa fa-pencil-square-o"></i> Edit</button>
+          </form>
+          <form method="get" action=<%="/beats/#{@beat.id}/destroy"%>>
+            <button type="submit" class="btn"><i class="fa fa-trash"></i> Trash</button>
+          </form>
+        </div>
       <% end %> 
   </center>
 <% end %>
