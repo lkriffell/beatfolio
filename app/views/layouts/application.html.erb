@@ -35,7 +35,7 @@
 
       <div class="right">
           <% if current_user %>
-          <div class="dropdown">
+          <div class="dropdown-image">
             <button class="dropbtn drop"><%= image_tag current_user.image %></button>
             <div class="dropdown-content">
                 <a href="#"><%= link_to current_user.username, "/users/#{current_user.id}" %></a>
