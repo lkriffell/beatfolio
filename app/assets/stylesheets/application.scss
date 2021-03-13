@@ -88,7 +88,8 @@ body {
 }
 
 .drop {
-  display: inline-block !important
+  // background-color: #C57333 !important;
+  display: inline-block !important;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -141,7 +142,8 @@ body {
 
 // PROFILE
 .profile-card-list {
-  column-count: 3;
+  column-count: 2;
+  padding-top: 30px;
 }
 
 .profile-tracks {
@@ -269,7 +271,7 @@ table, th, td {
   height: auto;
   width: 500px;
   min-width: 250px;
-  padding: 1.5rem;
+  padding: 20px;
   border-radius: 16px;
   background: #17141d;
   box-shadow: -1rem 0 3rem #000;
@@ -367,6 +369,6 @@ body {
 	background: 
 		repeating-radial-gradient(circle at bottom left, $colors),
 		repeating-radial-gradient(circle at bottom right, $colors);
-	background-blend-mode: overlay;
-	height: 100vh;
+	background-blend-mode: hue;
+	height: 200vh;
 }
