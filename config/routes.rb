@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   # Tags
   get '/beats/:id/tags/edit', to: 'beat_tags#edit'
+  post '/beats/:id/tags/edit', to: 'beat_tags#create'
+  get '/tags/:id/destroy', to: 'beat_tags#destroy'
 
   # Users
   get '/users', to: 'users#index'
