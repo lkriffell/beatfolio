@@ -14,7 +14,13 @@
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
           <form action="/" method="get">
-            <button class="dropbtn logo" type="submit"><%= image_tag "https://github.com/lkriffell/beatfolio/blob/main/app/assets/images/logo.png?raw=true" %></button>
+            <button class="btn" type="submit">Home</button>
+          </form>
+        </li>
+
+        <li class="nav-item">
+          <form action="/beats/new" method="get">
+            <button class="btn" type="submit">Upload</button>
           </form>
         </li>
       </ul>
