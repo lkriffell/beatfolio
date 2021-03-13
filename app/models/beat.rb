@@ -7,6 +7,7 @@ class Beat < ApplicationRecord
 
   belongs_to :user
   has_many :beat_tags, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   def self.related_beats(keyword)
     related_beats = {}
