@@ -23,7 +23,7 @@
         <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
         <h5>
           <form action=<%="/beats/#{beat.id}"%> method="get">
-            <button class="dropbtn logo" type="submit"><%= beat.name %></button>
+            <button class="dropbtn" type="submit"><%= beat.name %></button>
           </form>
         </h5>
       </header>
