@@ -7,10 +7,16 @@
       <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %></li>
       <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following"  %></li>
     <% elsif @following %>
-      <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %> <%= button_to "Unfollow", "/users/#{@user.id}/unfollow" %></li>
+      <form action=<%"/users/#{@user.id}/unfollow"%> method="get">
+        <button class="btn" type="submit">Unfollow</button>
+      </form>
+      <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %></li> 
       <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following" %></li>
     <% else %>
-      <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %> <%= button_to "Follow", "/users/#{@user.id}/follow" %></li>
+      <form action=<%"/users/#{@user.id}/follow"%> method="get">
+        <button class="btn" type="submit">Follow</button>
+      </form>
+      <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %></li>
       <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following" %></li>
     <% end %>
     <li>Joined: <%= @user.created_at.strftime("%B %d %Y") %></li>
