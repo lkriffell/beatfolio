@@ -26,6 +26,11 @@ Rails.application.routes.draw do
   get '/users/:id/update', to: 'users#edit'
   post '/users/:id/update', to: 'users#update'
 
+  # Likes
+
+  get '/beats/:id/like', to: 'likes#create'
+  get '/beats/:id/unlike', to: 'likes#destroy'
+
   # UserFollows
   post '/users/:id/follow', to: 'user_follows#create'
   post '/users/:id/unfollow', to: 'user_follows#destroy'
