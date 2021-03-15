@@ -1,0 +1,12 @@
+<% if beat.beat_tags.size > 0 %>
+    <div class='dropdown'>
+      <button class="dropbtn drop">Tags ▼</button>
+        <div class="dropdown-content">
+          <ul>
+            <% beat.beat_tags.each do |tag| %>
+              <li href="#"><%= link_to tag.tag, "/search?#{tag.tag}" %></li>
+            <% end %>
+          </ul>
+        </div>
+    </div>
+<% end %>
