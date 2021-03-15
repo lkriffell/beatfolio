@@ -11,6 +11,6 @@ class User < ApplicationRecord
   has_many :followers, foreign_key: 'user_id', class_name: 'UserFollow', dependent: :destroy
 
   def likes_beat?(beat)
-    beat.likes.pluck(:user_id).include?(id.to_s)
+    beat.likes.pluck(:user_id).include?(id)
   end
 end
