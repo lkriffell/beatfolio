@@ -1,9 +1,13 @@
-<% if current_user.likes_beat?(@beat) %>
-  <form action=<%="/beats/#{@beat.id}/unlike"%> method="get">
-    <button class="dropbtn" type="submit"><%= @beat.likes.size %> 👍</button>
-  </form>
-<% else %>
-  <form action=<%="/beats/#{@beat.id}/like"%> method="get">
-    <button class="dropbtn" type="submit"><%= @beat.likes.size %> 👍</button>
-  </form>
-<% end %>
+<% @beat = beat unless beat == nil %>
+
+<div class="like-button">
+  <% if current_user.likes_beat?(@beat) %>
+    <form action=<%="/beats/#{@beat.id}/unlike"%> method="get">
+      <button class="dropbtn" type="submit"><%= @beat.likes.size %> 👍</button>
+    </form>
+  <% else %>
+    <form action=<%="/beats/#{@beat.id}/like"%> method="get">
+      <button class="dropbtn" type="submit"><%= @beat.likes.size %> 👍</button>
+    </form>
+  <% end %>
+</div>
