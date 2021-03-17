@@ -27,7 +27,7 @@ body {
 .right {
   margin: 0;
   position: absolute;
-  right: 0%;
+  right: -5%;
 }
 
 .nav-item1 {
@@ -319,6 +319,7 @@ table, th, td {
   text-transform: uppercase;
   font-size: .66rem;
   position: relative;
+  width: 20%;
 }
 
 .info p:hover {
@@ -357,7 +358,10 @@ table, th, td {
 }
 
 .button-list {
-  display: inline-flex;
+  float: right;
+  position: absolute;
+  top: 25%;
+  right: 7%;
 }
 
 $colors :
