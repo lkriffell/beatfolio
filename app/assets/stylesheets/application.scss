@@ -337,6 +337,17 @@ table, th, td {
 
 // Buttons
 
+.like-button {
+  position: absolute;
+  right: 5%;
+}
+
+.partial-buttons {
+  width: 35%;
+  position: relative;
+  display: grid
+}
+
 .update-button {
   background-image: image-url("trash-can.png") no-repeat;
   cursor:pointer;

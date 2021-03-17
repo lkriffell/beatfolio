@@ -11,23 +11,19 @@
       <audio class='audio' controls>
         <source src=<%=@beat.audio.url%>/>
       </audio>
-
-      <div class="partial-buttons">
-        <%= render :partial => './partials/like_button', :locals => {:beat => @beat} %>
-        <%= render :partial => './partials/beat_tags', :locals => {:beat => @beat} %>
-      </div>
       
       <div class="info">
         <form action=<%="/users/#{@beat.user.id}"%> method="get">
           <p><button class="dropbtn" type="submit">Creator: <%= @beat.user.username %></button></p>
         </form>
         <p class="card-text"><%= @beat.description %></p>
-
       </div>
 
-      <br>
-
-
+      <div class="partial-buttons">
+        <%= render :partial => './partials/like_button', :locals => {:beat => @beat} %>
+        <%= render :partial => './partials/beat_tags', :locals => {:beat => @beat} %>
+      </div>
+      <br><br><br>
 
       <% if current_user.id == @beat.user_id %>
         <div class="button-list">
