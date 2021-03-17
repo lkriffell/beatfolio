@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   get '/beats/:id/like', to: 'likes#create'
   get '/beats/:id/unlike', to: 'likes#destroy'
+  get '/users/:id/likes', to: 'likes#index'
 
   # UserFollows
   post '/users/:id/follow', to: 'user_follows#create'
