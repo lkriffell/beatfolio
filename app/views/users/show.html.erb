@@ -50,18 +50,8 @@
               <p class="card-text"><%= beat.description %></p>
             </div>
 
-            <% if beat.beat_tags.size > 0 %>
-                <div class='dropdown'>
-                  <button class="dropbtn drop" style="width:100%">Tags ▼</button>
-                    <div class="dropdown-content">
-                      <ul>
-                        <% beat.beat_tags.each do |tag| %>
-                          <li href="#"><%= link_to tag.tag, "/search?#{tag.tag}" %></li>
-                        <% end %>
-                      </ul>
-                    </div>
-                </div>
-            <% end %>
+            <%= render :partial => './partials/like_button', :locals => {:beat => beat} %>
+            <%= render :partial => './partials/beat_tags', :locals => {:beat => beat} %>
           </article><br>
         <% end %>
     </section>
