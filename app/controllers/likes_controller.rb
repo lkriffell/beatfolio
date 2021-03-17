@@ -12,4 +12,9 @@ class LikesController < ApplicationController
     Like.find_by(beat_id: params[:id], user_id: current_user.id).delete
     redirect_to "/beats/#{params[:id]}"
   end
+
+  def index
+    @user = User.find(params[:id])
+    @likes = Like.where(user_id: @user.id)
+  end
 end
