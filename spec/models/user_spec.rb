@@ -14,6 +14,8 @@ RSpec.describe User, type: :model do
   it { should have_many :beats }
   it { should have_many :following }
   it { should have_many :followers }
+  it { should have_many :comments }
+  it { should have_many :likes }
 
   describe 'happy paths' do
     it 'can exist' do
