@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :password, presence: true
   has_many :beats, dependent: :destroy
   has_many :likes, through: :beats, dependent: :destroy
+  has_many :comments, through: :beats, dependent: :destroy
 
   has_many :following, foreign_key: 'follower_id', class_name: 'UserFollow', dependent: :destroy
   has_many :followers, foreign_key: 'user_id', class_name: 'UserFollow', dependent: :destroy
