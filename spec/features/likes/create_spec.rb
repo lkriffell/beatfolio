@@ -2,12 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'like' do
   before :each do 
-    visit login_path
-  
-    fill_in 'email', with: 'BillJ@gmail.com'
-    fill_in 'password', with: '1234'
-  
-    click_button('Log In')
+    @user = User.first
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
 
   describe 'happy paths' do
@@ -15,20 +11,15 @@ RSpec.describe 'like' do
       beat = Beat.first
       
       visit "/beats/#{beat.id}"
-
-      expect(Like.all.size).to eq(0)
+      expect(beat.likes.size).to eq(0)
 
       click_button "0 👍"
-
-      expect(Like.all.size).to eq(1)
-      expect(beat.likes.size).to eq(1)
-
+      
       expect(page).to have_content("1 👍")
 
       click_button "1 👍"
-
-      expect(Like.all.size).to eq(0)
-      expect(beat.likes.size).to eq(0)
+      
+      expect(page).to have_content("0 👍")
     end
   end
   describe 'sad paths' do
@@ -37,12 +28,15 @@ RSpec.describe 'like' do
       
       visit "/beats/#{beat.id}"
 
-      expect(Like.all.size).to eq(0)
+      expect(page).to have_content("0 👍")
 
       click_button "0 👍"
-      click_button "1 👍"
 
-      expect(Like.all.size).to eq(0)
+      expect(page).to have_content("1 👍")
+
+      visit "/beats/#{beat.id}/like"
+
+      expect(page).to have_content("1 👍")
     end
   end
 end
