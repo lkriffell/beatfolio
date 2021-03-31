@@ -1,21 +1,25 @@
 <center>
+  <% if @likes.empty? %>
+     <h5><%= @user.username %> has no liked tracks yet!</h5>
+  <% else %>
     <section class="card-list">
-      <h1><%= @user.username %>'s Liked Tracks</h1>
-        <% @likes.each do |like| %>
-          <article class="card">
-            <header class="card-header">
-              <p><%= like.beat.created_at.strftime("%B %d, %Y") %></p>
-              <h5><%= like.beat.name %></h5>
-            </header>
+        <h1><%= @user.username %>'s Liked Tracks</h1>
+          <% @likes.each do |like| %>
+            <article class="card">
+              <header class="card-header">
+                <p><%= like.beat.created_at.strftime("%B %d, %Y") %></p>
+                <h5><%= like.beat.name %></h5>
+              </header>
 
-            <div class="info">
-              <p>Creator: <%= like.beat.user.username %></p>
-            </div>
+              <div class="info">
+                <p>Creator: <%= like.beat.user.username %></p>
+              </div>
 
-            <audio class='audio' controls>
-              <source src=<%=like.beat.audio.url%>/>
-            </audio>
-          </article>
-        <% end %>
-    </section>
+              <audio class='audio' controls>
+                <source src=<%=like.beat.audio.url%>/>
+              </audio>
+            </article>
+          <% end %>
+      </section>
+  <% end %>
 </center>
