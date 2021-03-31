@@ -4,6 +4,14 @@ RSpec.describe 'user show' do
   describe 'happy paths' do
     it 'can be shown' do
       user = User.first
+
+      visit login_path
+  
+      fill_in 'email', with: 'BillJ@gmail.com'
+      fill_in 'password', with: '1234'
+    
+      click_button('Log In')
+      
       visit "/users/#{user.id}"
 
       expect(page).to have_content("Billy Joel")
