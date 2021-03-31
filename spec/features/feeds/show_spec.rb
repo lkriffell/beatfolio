@@ -13,7 +13,7 @@ RSpec.describe 'feed show' do
       expect(page).to have_content('hmu')
     end
 
-    it 'does not show content the user is following' do
+    it 'does not show content the user is not following' do
       visit "/feed"
 
       expect(page).to_not have_content('The Dopest Track Ever Made')
