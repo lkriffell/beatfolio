@@ -39,7 +39,9 @@
         <p class="card-text"><%= beat.description %></p>
       </div>
       
-      <%= render :partial => './partials/like_button', :locals => {:beat => beat} %>
+      <% if current_user %>
+        <%= render :partial => './partials/like_button', :locals => {:beat => beat} %>
+      <% end %>
 
       <%= render :partial => './partials/beat_tags', :locals => {:beat => beat} %>
     </article>
