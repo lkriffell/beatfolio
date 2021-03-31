@@ -6,11 +6,20 @@ Beat.delete_all
 BeatTag.delete_all
 UserFollow.delete_all
 
-main_user = FactoryBot.create(:user, username: 'lkriffell', email: 'lkriffell@gmail.com')
+main_user = FactoryBot.create(:user, username: 'Billy Joel', email: 'BillJ@gmail.com')
 follower1 = FactoryBot.create(:user)
 follower2 = FactoryBot.create(:user)
 follower3 = FactoryBot.create(:user)
 follower4 = FactoryBot.create(:user)
+
+discover_user = FactoryBot.create(:user)
+discover_beat = discover_user.beats.create(name:'The Dopest Track Ever Made', description: 'Why arent you following me?')
+discover_beat.beat_tags.create(tag: 'dope')
+discover_beat.beat_tags.create(tag: 'track')
+
+feed_user = FactoryBot.create(:user)
+feed_beat = feed_user.beats.create(name:'YOURE FOLLOWING ME', description: 'hmu')
+main_user.following.create(user_id: feed_user.id)
 
 main_user.followers.create(follower_id: follower1.id)
 main_user.followers.create(follower_id: follower2.id)
