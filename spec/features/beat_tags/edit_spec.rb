@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'beat' do
   before :each do 
     Beat.first.beat_tags.create(tag:"cool")
-    Beat.first.beat_tags.create(tag:"dope")
     Beat.first.beat_tags.create(tag:"nice")
     
     visit login_path
@@ -24,11 +23,9 @@ RSpec.describe 'beat' do
       expect(page).to have_link('nice')
 
       click_link('cool')
-      click_link('dope')
       click_link('nice')
 
       expect(page).to_not have_link('cool')
-      expect(page).to_not have_link('dope')
       expect(page).to_not have_link('nice')
     end
 
