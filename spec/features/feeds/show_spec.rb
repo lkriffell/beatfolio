@@ -20,4 +20,15 @@ RSpec.describe 'feed show' do
       expect(page).to_not have_content('Why arent you following me?')
     end
   end
+  describe 'sad paths' do
+    it 'shows all content for a logged out user' do      
+      visit "/feed"
+
+      expect(page).to have_content('YOURE FOLLOWING ME')
+      expect(page).to have_content('hmu')
+
+      expect(page).to have_content('The Dopest Track Ever Made')
+      expect(page).to have_content('Why arent you following me?')
+    end
+  end
 end
