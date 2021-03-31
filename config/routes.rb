@@ -48,5 +48,5 @@ Rails.application.routes.draw do
   get '/discover', to: 'feeds#index'
 
   # Search
-  post '/search', to: 'search#show'
+  get '/search', to: 'search#show'
 end
