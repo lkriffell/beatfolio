@@ -5,16 +5,29 @@ class LikesController < ApplicationController
     if !Like.find_by(beat_id: params[:id], user_id: current_user.id)
       Like.create(beat_id: params[:id], user_id: current_user.id)
     end
-    redirect_to "/beats/#{params[:id]}"
+    determine_redirect
   end
 
   def destroy
     Like.find_by(beat_id: params[:id], user_id: current_user.id).delete
-    redirect_to "/beats/#{params[:id]}"
+    determine_redirect
   end
 
   def index
     @user = User.find(params[:id])
     @likes = Like.where(user_id: @user.id)
+  end
+
+  private
+
+  def determine_redirect
+    current_uri = request.referer
+    if current_uri[22..25] == 'feed'
+      redirect_to "/feed"
+    elsif current_uri[22..25] == 'disc'
+      redirect_to "/discover"
+    else
+      redirect_to "/beats/#{params[:id]}"
+    end
   end
 end
