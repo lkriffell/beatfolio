@@ -15,38 +15,38 @@
 </center><br>
 
 <% if @beats %>
-<center>
-  <section class="feed-card-list">
-  <% @beats.each do |beat| %>
-    <article class="disabled-hover-card">
-      <header class="card-header">
-        <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
-        <h5>
-          <form action=<%="/beats/#{beat.id}"%> method="get">
-            <button class="dropbtn" type="submit"><%= beat.name %></button>
-          </form>
-        </h5>
-      </header>
+  <center>
+    <section class="feed-card-list">
+      <% @beats.each do |beat| %><br>
+        <article class="disabled-hover-card">
+          <header class="card-header">
+            <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
+            <h5>
+              <form action=<%="/beats/#{beat.id}"%> method="get">
+                <button class="dropbtn" type="submit"><%= beat.name %></button>
+              </form>
+            </h5>
+          </header>
 
-      <audio class='audio' controls>
-        <source src=<%=beat.audio.url%>/>
-      </audio>
+          <audio class='audio' controls>
+            <source src=<%=beat.audio.url%>/>
+          </audio>
 
-      <div class="info">
-        <form action=<%="/users/#{beat.user.id}"%> method="get">
-          <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
-        </form>
-        <p class="card-text"><%= beat.description %></p>
-      </div>
-      
-      <% if current_user %>
-        <%= render :partial => './partials/like_button', :locals => {:beat => beat} %>
-      <% end %>
+          <div class="info">
+            <form action=<%="/users/#{beat.user.id}"%> method="get">
+              <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
+            </form>
+            <p class="card-text"><%= beat.description %></p>
+          </div>
+          
+          <% if current_user %>
+            <%= render :partial => './partials/like_button', :locals => {:beat => beat} %>
+          <% end %>
 
-      <%= render :partial => './partials/beat_tags', :locals => {:beat => beat} %>
-    </article>
-    <br>
-  <% end %>
-  </section>
-</center>
+          <%= render :partial => './partials/beat_tags', :locals => {:beat => beat} %>
+          <br>
+        </article>
+      <% end %><br>
+    </section>
+  </center>
 <% end %>

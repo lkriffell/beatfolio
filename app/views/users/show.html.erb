@@ -27,34 +27,37 @@
 
 <center>
   <% if @user.beats %>
+    <section class="feed-card-title">
+    <h3><%= @user.username %>'s Tracks </h3>
+    </section><br>
     <section class="profile-tracks">
-      <h3><%= @user.username %>'s Tracks </h3><br>
-        <% @user.beats.each do |beat| %>
-          <article class="disabled-hover-card">
-            <header class="card-header">
-              <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
-              <h5>
-                <form action=<%="/beats/#{beat.id}"%> method="get">
-                  <button class="dropbtn logo" type="submit"><%= beat.name %></button>
-                </form>
-              </h5>
-            </header>
-
-            <audio class='audio' controls>
-              <source src=<%=beat.audio.url%>/>
-            </audio>
-
-            <div class="info">
-              <form action=<%="/users/#{beat.user.id}"%> method="get">
-                <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
+    <% @user.beats.each do |beat| %><br>
+        <article class="disabled-hover-card">
+          <header class="card-header">
+            <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
+            <h5>
+              <form action=<%="/beats/#{beat.id}"%> method="get">
+                <button class="dropbtn logo" type="submit"><%= beat.name %></button>
               </form>
-              <p class="card-text"><%= beat.description %></p>
-            </div>
+            </h5>
+          </header>
 
-            <%= render :partial => './partials/like_button', :locals => {:beat => beat} %>
-            <%= render :partial => './partials/beat_tags', :locals => {:beat => beat} %>
-          </article><br>
-        <% end %>
+          <audio class='audio' controls>
+            <source src=<%=beat.audio.url%>/>
+          </audio>
+
+          <div class="info">
+            <form action=<%="/users/#{beat.user.id}"%> method="get">
+              <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
+            </form>
+            <p class="card-text"><%= beat.description %></p>
+          </div>
+
+          <%= render :partial => './partials/like_button', :locals => {:beat => beat} %>
+          <%= render :partial => './partials/beat_tags', :locals => {:beat => beat} %>
+          <br>
+        </article>
+    <% end %><br>
     </section>
   <% end %>
 </center>

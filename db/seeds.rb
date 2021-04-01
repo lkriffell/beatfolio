@@ -20,6 +20,7 @@ discover_beat.beat_tags.create(tag: 'track')
 feed_user = FactoryBot.create(:user)
 feed_beat = feed_user.beats.create(name:'YOURE FOLLOWING ME', description: 'hmu')
 main_user.following.create(user_id: feed_user.id)
+main_user.likes.create(beat_id: feed_beat.id)
 
 main_user.followers.create(follower_id: follower1.id)
 main_user.followers.create(follower_id: follower2.id)
