@@ -5,40 +5,7 @@
   <h1><%= "beats matching '#{@search}'"%></h1>
   <% @beats.each do |beat| %>
     <article class="card">
-      <header class="card-header">
-        <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
-        <h5>
-          <form action=<%="/beats/#{beat.id}"%> method="get">
-            <button class="dropbtn logo" type="submit"><%= beat.name %></button>
-          </form>
-        </h5>
-      </header>
-
-      <audio class='audio' controls>
-        <source src=<%=beat.audio.url%>/>
-      </audio>
-
-      <div class="info">
-        <form action=<%="/users/#{beat.user.id}"%> method="get">
-          <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
-        </form>
-        <p class="card-text"><%= beat.description %></p>
-      </div>
-
-      <%= render :partial => './partials/beat_tags', :locals => {:beat => beat} %>
-    </article>
-  <% end %>
-  </section>
-<% end %>
-
-<% if @related_beats.size > 0 %>
-  <% @related_beats.each do |keyword, beats| %>
-    <section class="card-list">
-    <% if beats.size > 0 %>
-      <h1><%= "results for the tag '#{keyword}'"%></h1>
-    <% end %>
-    <% beats.each do |beat| %>
-      <article class="card">
+      <center>
         <header class="card-header">
           <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
           <h5>
@@ -59,6 +26,43 @@
           <p class="card-text"><%= beat.description %></p>
         </div>
 
+        <div style="position:static;float:left;width:auto;"<%= render :partial => './partials/beat_tags', :locals => {:beat => beat} %>/>
+      </center>
+    </article>
+  <% end %>
+  </section>
+<% end %>
+
+<% if @related_beats.size > 0 %>
+  <% @related_beats.each do |keyword, beats| %>
+    <section class="card-list">
+    <% if beats.size > 0 %>
+      <h1><%= "results for the tag '#{keyword}'"%></h1>
+    <% end %>
+    <% beats.each do |beat| %>
+      <article class="card">
+        <center>
+        <header class="card-header">
+          <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
+          <h5>
+            <form action=<%="/beats/#{beat.id}"%> method="get">
+              <button class="dropbtn logo" type="submit"><%= beat.name %></button>
+            </form>
+          </h5>
+        </header>
+
+        <audio class='audio' controls>
+          <source src=<%=beat.audio.url%>/>
+        </audio>
+
+        <div class="info">
+          <form action=<%="/users/#{beat.user.id}"%> method="get">
+            <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
+          </form>
+          <p class="card-text"><%= beat.description %></p>
+        </div>
+
+        </center>
         <%= render :partial => './partials/beat_tags', :locals => {:beat => beat} %>
       </article>
     <% end %>

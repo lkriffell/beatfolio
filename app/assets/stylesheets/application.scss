@@ -141,11 +141,17 @@ body {
 .profile-tracks {
   position: absolute;
   left: 35%;
-  top: 15%;
+  top: 30%;
 }
 
 .feed-card-list {
   column-count: 1;
+} 
+
+.feed-card-title {
+  left: 35%;
+  top: 20%;
+  position: absolute;
 } 
 
 img {
