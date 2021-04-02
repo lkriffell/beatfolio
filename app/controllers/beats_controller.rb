@@ -19,7 +19,11 @@ class BeatsController < ApplicationController
   end
 
   def show
-    @beat = Beat.find(params[:id])
+    if Beat.exists?(params[:id])
+      @beat = Beat.find(params[:id])
+    else
+      flash[:notice] = "That beat doesn't exist"
+    end
   end
 
 def edit
