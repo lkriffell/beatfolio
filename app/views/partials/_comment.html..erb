@@ -1,0 +1,10 @@
+<div class="add-comment">
+  <%= form_tag("/beats/#{@beat.id}/comments/create", :method => "post") do %>  
+    <%= button_tag "Reply", :class => "btn",:name => nil %>  
+    <div class="comment-field"><%= text_field_tag :description, params[:description], placeholder: "Comment..." %></div>
+  <% end %><br>
+</div>      
+
+<div class="comment-section">
+  <div class="comment"><p><%= comment.description %></p></div>
+</div>
