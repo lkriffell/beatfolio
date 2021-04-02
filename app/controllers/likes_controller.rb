@@ -22,9 +22,9 @@ class LikesController < ApplicationController
 
   def determine_redirect
     current_uri = request.referer
-    if current_uri[22..25] == 'feed'
+    if current_uri && current_uri[22..25] == 'feed'
       redirect_to "/feed"
-    elsif current_uri[22..25] == 'disc'
+    elsif current_uri && current_uri[22..25] == 'disc'
       redirect_to "/discover"
     else
       redirect_to "/beats/#{params[:id]}"
