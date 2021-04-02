@@ -6,9 +6,7 @@ RSpec.describe 'follows' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
   describe 'happy paths' do
-    it 'can shown followers' do
-      
-      
+    it 'can shown followers' do  
       visit "/users/#{@user.id}/followers"
       @user.followers.each do |follower|
         expect(page).to have_content(follower.user.username)
