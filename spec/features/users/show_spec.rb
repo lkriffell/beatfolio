@@ -14,6 +14,7 @@ RSpec.describe 'user show' do
       expect(page).to have_content("Billy Joel's Tracks")
       expect(page).to have_content(user.beats.first.name)
       expect(page).to have_content(user.beats.last.name)
+      expect(page).to have_css("img[src*='#{user.image}']")
     end
   end
   describe 'sad paths' do
