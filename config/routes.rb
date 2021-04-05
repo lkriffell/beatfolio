@@ -49,4 +49,9 @@ Rails.application.routes.draw do
 
   # Search
   get '/search', to: 'search#show'
+
+  # Comments
+  post '/beats/:id/comments/create', to: 'comments#create'
+  get '/beats/:id/comments/:comment_id/destroy', to: 'comments#destroy'
+  get '/users/:id/comments', to: 'comments#index'
 end
