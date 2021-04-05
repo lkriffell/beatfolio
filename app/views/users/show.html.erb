@@ -20,6 +20,7 @@
       <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following" %></li>
     <% end %>
     <li>Liked Tracks: <%= link_to @like_count, "/users/#{@user.id}/likes" %></li>
+    <li>Comments: <%= link_to @comment_count, "/users/#{@user.id}/comments" %></li>
     <li>Tracks Uploaded: <%= @user.beats.size %></li>
     <li>Member Since: <%= @user.created_at.strftime("%B %d %Y") %></li>
   </ul>
@@ -51,6 +52,7 @@
               <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
             </form>
             <p class="card-text"><%= beat.description %></p>
+            <p class="card-text">Comments: <%= beat.comments.size %></p>
           </div>
 
           <%= render :partial => './partials/like_button', :locals => {:beat => beat} %>
