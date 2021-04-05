@@ -25,6 +25,7 @@ class UsersController < ApplicationController
       @follower_count = @user.followers.size
       @following_count = @user.following.size
       @like_count = Like.where(user_id: @user.id).size
+      @comment_count = @user.comments.size
       if current_user
         @own_page = true if @user == current_user
         @following = true if current_user.following.exists?(user_id: @user.id)
