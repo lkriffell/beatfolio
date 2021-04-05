@@ -1,0 +1,18 @@
+<center>
+  <% if @comments %>
+    <h3><%= @user.username %>'s comments</h3><br>
+    <table class="comment-header header-index" ></table><br>
+    <% @comments.each do |comment| %>
+      <div class="comment">
+        <p class="comment-index comment-description"><%= comment.created_at.strftime("%B %d, %Y") + " - on " %><%=(link_to comment.beat.name, "/beats/#{comment.beat.id}") %></p>
+        <p class="comment-index comment-description"><%= comment.description %></p>
+        <form method="get" action=<%="/beats/#{comment.beat.id}/comments/#{comment.id}/destroy"%>>
+          <button type="submit" class="btn"><i class="fa fa-trash"></i></button>
+        </form>
+      <br><table class="comment-header header-index" ></table><br>
+      </div>
+    <% end %>
+  <% else %>
+    <h3><%= @user.username %> doesn't have any comments yet!</h3>
+  <% end %>
+</center>
