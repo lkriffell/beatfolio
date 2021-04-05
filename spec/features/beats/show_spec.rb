@@ -12,6 +12,7 @@ RSpec.describe 'beat' do
       visit "beats/#{@beat.id}"
 
       expect(page).to have_content(@beat.name)
+      expect(page).to have_link(@beat.user.username)
       expect(page).to have_content(@beat.description)
       @beat.beat_tags.each do |tag|
         expect(page).to have_content(tag.tag)
