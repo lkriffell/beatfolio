@@ -1,0 +1,46 @@
+<div class="add-comment">
+  <%= form_tag("/beats/#{@beat.id}/comments/create", :method => "post") do %>  
+    <%= button_tag "Reply", :class => "btn",:name => nil %>  
+    <div class="comment-field"><%= text_area_tag :description, params[:description], placeholder: "Comment..." %></div>
+  <% end %><br>
+</div>  
+
+<% if !@beat.comments.empty? %>
+<center>
+  <table class="comment-header" ></table>
+    <div class="comments">
+      <% if current_user == beat.user %>
+        <% beat.comments.each do |comment| %>
+          <div class="comment">
+            <%= link_to (image_tag comment.user.image), "/users/#{beat.user.id}" %>
+            <p class="dropbtn"><%= link_to comment.user.username, "/users/#{comment.user.id}" %><p>
+            <p class="comment-description"><%= comment.description %></p>
+            <form method="get" action=<%="/beats/#{@beat.id}/comments/#{comment.id}/destroy"%>>
+              <button type="submit" class="btn"><i class="fa fa-trash"></i></button>
+            </form>
+          </div>
+          <table class="comment-header" ></table>
+        <% end %>
+      <% else%>
+        <% beat.comments.each do |comment| %>
+          <% if comment.user == current_user %>
+            <div class="comment">
+              <%= link_to (image_tag comment.user.image), "/users/#{beat.user.id}" %>
+              <p class="dropbtn"><%= link_to comment.user.username, "/users/#{comment.user.id}" %><p>
+              <p class="comment-description"><%= comment.description %></p>
+              <form method="get" action=<%="/beats/#{@beat.id}/comments/#{comment.id}/destroy"%>>
+                <button type="submit" class="btn"><i class="fa fa-trash"></i></button>
+              </form>
+            </div>
+          <table class="comment-header" ></table>
+          <% else %>
+            <div class="comment">
+              <%= link_to (image_tag comment.user.image), "/users/#{beat.user.id}" %>
+              <p class="comment-description"><%= comment.description %></p>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+</center>
+<% end %>
