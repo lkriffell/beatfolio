@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<br><br><br><br>
 
 <% if @beat %>
   <center>
@@ -17,11 +18,12 @@
           <p><button class="dropbtn" type="submit">Creator: <%= @beat.user.username %></button></p>
         </form>
         <p class="card-text"><%= @beat.description %></p>
+        <p class="card-text">Comments: <%= @beat.comments.size %></p>
       </div>
 
       <div class="partial-buttons">
-        <%= render :partial => './partials/like_button', :locals => {:beat => @beat} %>
-        <%= render :partial => './partials/beat_tags', :locals => {:beat => @beat} %>
+        <%= render :partial => 'partials/like_button', :locals => {:beat => @beat} %>
+        <%= render :partial => 'partials/beat_tags', :locals => {:beat => @beat} %>
       </div>
       <br><br><br>
 
@@ -34,6 +36,8 @@
             <button type="submit" class="btn"><i class="fa fa-trash"></i></button>
           </form>
         </div>
-      <% end %> 
+      <% end %> <br>
+
+      <%= render :partial => 'partials/comment', :locals => {:beat => @beat} %>
   </center>
 <% end %>
