@@ -24,5 +24,13 @@ RSpec.describe 'comments' do
         expect(page).to have_content(comment.description)
       end
     end
+
+    it 'can be deleted by the commenter or beat uploader' do
+      visit "beats/#{@beat.id}"
+
+      @beat.comments.each do |tag|
+        expect(page).to have_content(comment.description)
+      end
+    end
   end
 end
