@@ -37,6 +37,7 @@
               <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
             </form>
             <p class="card-text"><%= beat.description %></p>
+            <p class="card-text">Comments: <%= beat.comments.size %></p>
           </div>
           
           <% if current_user %>
