@@ -2,11 +2,9 @@
     <div class='dropdown'>
       <button class="dropbtn drop">Tags ▼</button>
         <div class="dropdown-content">
-          <ul>
             <% beat.beat_tags.each do |tag| %>
-              <li href="#"><%= link_to tag.tag, search_path(:keyword => tag.tag) %></li>
+              <a href="#"><%= link_to tag.tag, search_path(:keyword => tag.tag) %></a>
             <% end %>
-          </ul>
         </div>
     </div
 <% end %>
