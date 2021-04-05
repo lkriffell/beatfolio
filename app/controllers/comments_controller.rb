@@ -7,5 +7,13 @@ class CommentsController < ApplicationController
   end
   
   def destroy
+    comment = Comment.find(params[:comment_id])
+    comment.delete
+    redirect_to "/beats/#{params[:id]}"
+  end
+
+  def index
+    @user = User.find(params[:id])
+    @comments = @user.comments
   end
 end
