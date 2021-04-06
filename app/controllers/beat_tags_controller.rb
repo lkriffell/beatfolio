@@ -3,6 +3,11 @@ class BeatTagsController < ApplicationController
   
   def edit
     @beat = Beat.find(params[:id])
+    if current_user.beats.include?(@beat)
+      return @beat
+    else
+      redirect_to beats_show_path(@beat)
+    end
   end
 
   def create
