@@ -26,7 +26,7 @@ class BeatsController < ApplicationController
     end
   end
 
-def edit
+  def edit
     @beat = Beat.find(params[:id])
   end
 
