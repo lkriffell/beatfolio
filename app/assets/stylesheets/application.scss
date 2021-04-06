@@ -308,6 +308,7 @@ table, th, td {
 .beat-show-header h5{
   fill: linear-gradient(90deg,#ff8a00,#e52e71) !important;
 }
+
 // Sample info
 
 .info {
@@ -365,8 +366,8 @@ table, th, td {
 .button-list {
   float: right;
   position: absolute;
-  top: 25%;
-  right: 7%;
+  top: -200%;
+  right: -55%;
 }
 
 $colors :
@@ -386,4 +387,46 @@ body {
 	background-blend-mode: hue;
 	height: auto;
   background-attachment: fixed;
+}
+.add-comment {
+  column-count: 2;
+  column-width: 1%;
+  position: inherit;
+  right: 50%;
+}
+
+textarea#description {
+  width: 200%;
+}
+
+.comment-description {
+  margin-top: 15px;
+  white-space: pre-wrap;
+  width: 95%;
+}
+
+.comment img {
+  width: 15%;
+  margin-top: 20px;
+}
+
+.delete-icon {
+  margin: 0 !important;
+}
+
+.comment-header {
+  width: 100%;
+  border-style: solid;
+  background-image: linear-gradient(90deg,#579585,#48425D) !important;
+  background-origin: border-box; 
+  border-spacing: 5px; 
+  border: 5px solid transparent;
+}
+
+.header-index {
+  width: 50% !important;
+}
+
+.comment-index {
+  width: 40% !important;
 }
