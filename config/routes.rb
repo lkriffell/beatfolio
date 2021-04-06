@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   # Beats
   get '/beats/new', to: 'beats#new'
   post '/beats/new', to: 'beats#create'
-  get '/beats/:id', to: 'beats#show'
+  get '/beats/:id', to: 'beats#show', as: :beats_show
   get '/beats/:id/destroy', to: 'beats#destroy'
   get '/beats/:id/update', to: 'beats#edit'
   post '/beats/:id/update', to: 'beats#update'
 
   # Tags
-  get '/beats/:id/tags/edit', to: 'beat_tags#edit'
+  get '/beats/:id/tags/edit', to: 'beat_tags#edit', as: :edit_tags
   post '/beats/:id/tags/edit', to: 'beat_tags#create'
   get '/tags/:id/destroy', to: 'beat_tags#destroy'
 
