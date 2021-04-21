@@ -29,7 +29,7 @@
 
       <% if current_user.id == @beat.user_id %>
         <div class="button-list">
-          <form method="get" action=<%="/beats/#{@beat.id}/update"%>>
+          <form method="get" action=<%=beats_edit_path(@beat)%>>
             <button type="submit" class="btn"><i class="fa fa-pencil-square-o"></i></button>
           </form><br>
           <form method="get" action=<%="/beats/#{@beat.id}/destroy"%>>
