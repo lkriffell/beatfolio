@@ -2,20 +2,15 @@ require 'rails_helper'
 
 RSpec.describe 'beat' do
   before :each do 
-    visit login_path
-  
-    fill_in 'email', with: 'BillJ@gmail.com'
-    fill_in 'password', with: '1234'
-  
-    click_button('Log In')
-
     @user = User.find_by(email: "BillJ@gmail.com")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+
     @beat = @user.beats.first
   end
 
   describe 'happy paths' do
     it 'can be updated' do
-      visit "beats/#{@beat.id}/update"
+      visit beats_edit_path(@beat)
     
       fill_in 'beat_image', with: 'This pic'
       fill_in 'beat_name', with: 'This cool beat'
@@ -38,11 +33,12 @@ RSpec.describe 'beat' do
 
   describe 'sad paths' do
     it 'cannot be updated as blank' do
-      visit "beats/#{@beat.id}/update"
+      visit beats_edit_path(@beat)
     
       fill_in 'beat_image', with: ''
       fill_in 'beat_name', with: ''
       fill_in 'beat_description', with: ''
+      save_and_open_page
       
       click_button("Update")
 
