@@ -3,6 +3,9 @@ require 'open-uri'
 
 require_relative '../poros/sample.rb'
 class SamplesController < ApplicationController
+
+  caches_action :index, :expires_in => 1.hour
+
   # uses nokogiri's output to instantiate sample and creator objects and assign them attributes, then establishes the sample-creator relationship
   def index
     @samples = []
