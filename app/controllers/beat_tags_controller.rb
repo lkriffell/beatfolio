@@ -11,7 +11,11 @@ class BeatTagsController < ApplicationController
   end
 
   def create
-    BeatTag.create(beat_tag_params)
+    if beat_tag_params[:tag] != ""
+      BeatTag.create(beat_tag_params)
+    else
+      flash[:now] = "Tags can't be blank!"
+    end
     redirect_to "/beats/#{beat_tag_params[:beat_id]}/tags/edit"
   end
 
