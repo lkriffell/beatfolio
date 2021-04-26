@@ -15,4 +15,13 @@ RSpec.describe BeatTag, type: :model do
     expect(BeatTag.first).to eq(beat_tag)
     expect(beat.beat_tags.first).to eq(beat_tag)
   end
+
+  it "can't be blank" do
+    BeatTag.delete_all
+    user = create :user
+    beat = user.beats.create(name: 'mac miller type beat')
+    beat_tag = beat.beat_tags.create(tag: '')
+
+    expect(BeatTag.all.size).to eq(0)
+  end
 end
