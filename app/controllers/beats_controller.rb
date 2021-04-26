@@ -11,7 +11,7 @@ class BeatsController < ApplicationController
           @beat.beat_tags.create(tag: tag.strip)
         end
       end
-      redirect_to "/beats/#{@beat.id}"
+      redirect_to beats_show_path(@beat)
     else
       flash[:notice] = "Something went wrong, did you fill out all fields?"
       redirect_to "/beats/new"
@@ -34,10 +34,10 @@ class BeatsController < ApplicationController
     @beat = Beat.find(params[:id])
     @beat.update(beat_params)
     if @beat.save
-      redirect_to "/beats/#{@beat.id}"
+      redirect_to beats_show_path(@beat)
     else
-      flash[:notice] = 'Your information could not be saved'
-      redirect_to "/beats/#{@beat.id}/update"
+      flash[:now] = "The beat couldn't be updated. Please try again."
+      redirect_to beats_edit_path(@beat)
     end
   end
 
