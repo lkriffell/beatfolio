@@ -35,14 +35,14 @@ RSpec.describe 'beat' do
     it 'cannot be updated as blank' do
       visit beats_edit_path(@beat)
     
-      fill_in 'beat_image', with: ''
       fill_in 'beat_name', with: ''
       fill_in 'beat_description', with: ''
-      save_and_open_page
       
       click_button("Update")
 
-      expect(current_path).to eq("/beats/#{@beat.id}/update")
+      expect(page).to have_content("The beat couldn't be updated. Please try again.")
+
+      expect(current_path).to eq(beats_edit_path(@beat))
     end
   end
 end
