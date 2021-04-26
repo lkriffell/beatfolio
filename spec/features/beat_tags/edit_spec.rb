@@ -49,6 +49,8 @@ RSpec.describe 'beat' do
       fill_in 'beat_tag_tag', with: ''
       
       click_button('Add Tag')
+      
+      expect(page).to have_content("Tags can't be blank!")
 
       expect(Beat.first.beat_tags.include?('')).to eq(false)
     end
