@@ -12,7 +12,7 @@ RSpec.describe 'comments' do
       visit "beats/#{@beat.id}"
 
       fill_in :description, with: "nice beat dude"
-      click_button "Comment"
+      click_button "Reply"
 
       expect(Comment.all.size).to eq(1)
     end
