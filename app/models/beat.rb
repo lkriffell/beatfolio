@@ -10,9 +10,9 @@ class Beat < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  def self.related_beats(keyword)
+  def self.related_beats(keywords)
     related_beats = {}
-    keyword.split(' ').each do |tag|
+    keywords.split(' ').each do |tag|
       related_beats[tag] = BeatTag.where("tag like ?", tag).select('beat_id')
     end
     related_beats.each do |keyword, ids|
