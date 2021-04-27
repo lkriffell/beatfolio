@@ -1,6 +1,22 @@
 language: ruby
-rvm:
-- 2.0.0
-- 1.9.3
-- jruby-19mode
-- rbx-2
+rbenv:
+- 3.0.1
+services:
+  - postgresql
+script:
+- bundle exec rails db:{create,migrate} RAILS_ENV=test
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure:
+  app: beatfolio
+  on:
+    repo: beatfolio
+    branch: main
+notifications:
+  email:
+    on_success: never
+    on_failure: never
+cache:
+- bundler
