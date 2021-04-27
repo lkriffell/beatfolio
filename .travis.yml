@@ -1,6 +1,6 @@
 language: ruby
 rbenv:
-- 3.0.1
+- 2.5.3
 services:
   - postgresql
 script:
