@@ -41,7 +41,6 @@ group :development, :test do
   gem 'pry'
   gem 'simplecov'
   gem 'shoulda-matchers'
-  # gem "paperclip", "~> 6.0.0"
 end
 
 group :test do
