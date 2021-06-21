@@ -3,6 +3,7 @@ class Beat < ApplicationRecord
   validates :name, presence: true
 
   belongs_to :user
+  has_one_attached :audio_file
   has_many :beat_tags, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
