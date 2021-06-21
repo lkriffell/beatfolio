@@ -11,7 +11,11 @@
           </h5>
         </header>
         <div class="card-author">
-          <img src=<%= user.image %> />
+          <% if user.avatar.attached? %>
+            <%= image_tag user.avatar.key %><br>
+          <% else %>
+            <%= image_tag("blank.png") %><br>
+          <% end %>
         </div>
       </article>
     <% end %>

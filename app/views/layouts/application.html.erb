@@ -38,7 +38,12 @@
       <div class="right">
           <% if current_user %>
           <div class="dropdown-image">
-            <button class="dropbtn drop"><%= image_tag current_user.image %></button>
+            <% if @user.avatar.attached? %>
+              <button class="dropbtn drop"><%= image_tag current_user.avatar.key %></button>
+            <% else %>
+              <button class="dropbtn drop"><%= image_tag("blank.png") %></button>
+            <% end %>
+            
             <div class="dropdown-content">
                 <a href="#"><%= link_to current_user.username, "/users/#{current_user.id}" %></a>
                 <a href="#"><%= link_to 'Settings', "/users/#{current_user.id}/update" %></a>

@@ -1,6 +1,10 @@
 <% if @user %>
 <div class="profile">
-  <%= image_tag @user.image %><br>
+  <% if @user.avatar.attached? %>
+    <%= image_tag @user.avatar.key %><br>
+  <% else %>
+    <%= image_tag("blank.png") %><br>
+  <% end %>
   <ul>
     <h2><%= @user.username %></h2>
     <% if @own_page %>
@@ -44,7 +48,7 @@
           </header>
 
           <audio class='audio' controls>
-            <source src=<%=beat.audio.url%>/>
+            <source src=<%= cl_video_tag beat.audio_file.key %>/>
           </audio>
 
           <div class="info">
