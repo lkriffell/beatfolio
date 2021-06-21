@@ -11,7 +11,6 @@ RSpec.describe 'user create' do
       fill_in 'user_username', with: 'someone'
       fill_in 'user_email', with: 'someone@email.com'
       fill_in 'user_password', with: '1234'
-      fill_in 'user_image', with: 'https://www.fillmurray.com/200/200'
 
       click_button('Save User')
 
@@ -21,7 +20,6 @@ RSpec.describe 'user create' do
 
       expect(user.username).to eq('someone')
       expect(user.email).to eq('someone@email.com')
-      expect(user.image).to eq('https://www.fillmurray.com/200/200')
 
       expect(current_path).to eq("/users/#{user.id}")
     end
@@ -32,7 +30,6 @@ RSpec.describe 'user create' do
       
       fill_in 'user_email', with: 'someone@email.com'
       fill_in 'user_password', with: '1234'
-      fill_in 'user_image', with: 'https://www.fillmurray.com/200/200'
 
       click_button('Save User')
 
@@ -46,7 +43,6 @@ RSpec.describe 'user create' do
 
       fill_in 'user_username', with: 'someone'
       fill_in 'user_email', with: 'someone@email.com'
-      fill_in 'user_image', with: 'https://www.fillmurray.com/200/200'
 
       click_button('Save User')
 
@@ -60,21 +56,6 @@ RSpec.describe 'user create' do
 
       fill_in 'user_username', with: 'someone'
       fill_in 'user_password', with: '1234'
-      fill_in 'user_image', with: 'https://www.fillmurray.com/200/200'
-
-      click_button('Save User')
-
-      expect(current_path).to eq("/users/new")
-
-      expect(page).to have_content("Something went wrong, did you fill out all fields?")
-    end
-
-    it 'cannot be registered without image' do
-      visit users_new_path
-
-      fill_in 'user_username', with: 'someone'
-      fill_in 'user_password', with: '1234'
-      fill_in 'user_email', with: 'someone@email.com'
 
       click_button('Save User')
 
