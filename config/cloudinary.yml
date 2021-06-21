@@ -1,0 +1,18 @@
+development:
+  cloud_name: dfistxt5z
+  api_key: '694919533296892'
+  api_secret: UgkxlKkY_FoEsKQiKOLigJ1y8j4
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dfistxt5z
+  api_key: '694919533296892'
+  api_secret: UgkxlKkY_FoEsKQiKOLigJ1y8j4
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dfistxt5z
+  api_key: '694919533296892'
+  api_secret: UgkxlKkY_FoEsKQiKOLigJ1y8j4
+  enhance_image_tag: true
+  static_file_support: false
