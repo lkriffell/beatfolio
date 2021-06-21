@@ -29,7 +29,7 @@
       </header>
 
       <audio class='audio' controls>
-        <source src=<%=beat.audio.url%>/>
+        <source src=<%= cl_video_tag beat.audio_file.key %>/>
       </audio>
 
       <div class="info">
