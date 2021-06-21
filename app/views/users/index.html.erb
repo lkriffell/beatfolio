@@ -12,9 +12,9 @@
         </header>
         <div class="card-author">
           <% if user.avatar.attached? %>
-            <%= image_tag user.avatar.key %><br>
+            <%= cl_image_tag(user.avatar.key, :height=>200, :width=>200) %><br>
           <% else %>
-            <%= image_tag("blank.png") %><br>
+            <%= image_tag("blank.png", :height=>200, :width=>200) %><br>
           <% end %>
         </div>
       </article>

@@ -38,10 +38,10 @@
       <div class="right">
           <% if current_user %>
           <div class="dropdown-image">
-            <% if @user.avatar.attached? %>
-              <button class="dropbtn drop"><%= image_tag current_user.avatar.key %></button>
+            <% if current_user.avatar.attached? %>
+              <button class="dropbtn drop"><%= cl_image_tag(current_user.avatar.key, :height=>225, :width=>225) %></button>
             <% else %>
-              <button class="dropbtn drop"><%= image_tag("blank.png") %></button>
+              <button class="dropbtn drop"><%= image_tag("blank.png", :height=>225, :width=>225) %></button>
             <% end %>
             
             <div class="dropdown-content">
