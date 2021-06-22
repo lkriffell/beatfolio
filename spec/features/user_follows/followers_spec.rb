@@ -10,7 +10,6 @@ RSpec.describe 'follows' do
       visit "/users/#{@user.id}/followers"
       @user.followers.each do |follower|
         expect(page).to have_content(follower.user.username)
-        expect(page).to have_css("img[src*='#{follower.user.image}']")
         expect(page).to have_content(follower.created_at.strftime("%B %d, %Y"))
       end
     end
@@ -18,7 +17,6 @@ RSpec.describe 'follows' do
       visit "/users/#{@user.id}/following"
       @user.following.each do |following|
         expect(page).to have_content(following.user.username)
-        expect(page).to have_css("img[src*='#{following.user.image}']")
         expect(page).to have_content(following.created_at.strftime("%B %d, %Y"))
       end
     end

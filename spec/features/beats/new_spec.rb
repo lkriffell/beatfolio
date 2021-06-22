@@ -3,12 +3,8 @@ require 'rails_helper'
 RSpec.describe 'beat' do
   before :each do 
     Beat.delete_all
-    visit login_path
-  
-    fill_in 'email', with: 'BillJ@gmail.com'
-    fill_in 'password', with: '1234'
-  
-    click_button('Log In')
+    user = User.find_by(email: "BillJ@gmail.com")
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
 
   describe 'happy paths' do
@@ -17,7 +13,6 @@ RSpec.describe 'beat' do
       visit '/beats/new'
 
       fill_in 'beat_name', with: 'Dope Beat'
-      fill_in 'beat_image', with: 'This pic'
       fill_in 'beat_tags', with: 'cool, hip, hop, rap'
       fill_in 'beat_description', with: 'a dope beat I made'
 
@@ -29,7 +24,6 @@ RSpec.describe 'beat' do
       expect(current_path).to eq("/beats/#{beat.id}")
 
       expect(beat.description).to eq('a dope beat I made')
-      expect(beat.image).to eq('This pic')
 
       expect(beat.beat_tags.size).to eq(4)
       expect(beat.beat_tags[0].tag).to eq('cool')
@@ -50,7 +44,6 @@ RSpec.describe 'beat' do
     it 'cannot be created without name' do
       visit '/beats/new'
 
-      fill_in 'beat_image', with: 'This pic'
       fill_in 'beat_tags', with: 'cool, hip, hop, rap'
 
       click_button('Save Beat')

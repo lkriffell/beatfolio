@@ -11,7 +11,6 @@ RSpec.describe 'user update' do
       fill_in 'user_username', with: 'someone'
       fill_in 'user_email', with: 'someone@email.com'
       fill_in 'user_password', with: '1234'
-      fill_in 'user_image', with: 'https://www.fillmurray.com/200/200'
 
       click_button('Update')
 
@@ -21,7 +20,6 @@ RSpec.describe 'user update' do
 
       expect(@user.username).to eq('someone')
       expect(@user.email).to eq('someone@email.com')
-      expect(@user.image).to eq('https://www.fillmurray.com/200/200')
 
       expect(page).to have_content('someone')
     end
@@ -32,7 +30,6 @@ RSpec.describe 'user update' do
       
       fill_in 'user_email', with: ''
       fill_in 'user_username', with: ''
-      fill_in 'user_image', with: ''
 
       click_button('Update')
 

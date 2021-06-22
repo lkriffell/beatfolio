@@ -12,7 +12,6 @@ RSpec.describe 'beat' do
     it 'can be updated' do
       visit beats_edit_path(@beat)
     
-      fill_in 'beat_image', with: 'This pic'
       fill_in 'beat_name', with: 'This cool beat'
       fill_in 'beat_description', with: 'a dope beat'
       
@@ -26,7 +25,6 @@ RSpec.describe 'beat' do
       @beat.reload
 
       expect(@beat.name).to eq('This cool beat')
-      expect(@beat.image).to eq('This pic')
       expect(@beat.description).to eq('a dope beat')
     end
   end

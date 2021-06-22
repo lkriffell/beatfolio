@@ -27,7 +27,6 @@ RSpec.describe User, type: :model do
 
       expect(@user.username).to eq(created_user.username)
       expect(@user.email).to eq(created_user.email)
-      expect(@user.image).to eq(created_user.image)
       expect(@user.likes.size).to eq(1)
       expect(@user.beats.size).to eq(1)
     end
