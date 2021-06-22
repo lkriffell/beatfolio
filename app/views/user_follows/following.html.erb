@@ -11,9 +11,11 @@
               </form>
             </h5>
           </header>
-          <div class="card-author">
-            <img src=<%= follow.user.image %> />
-          </div>
+          <% if follow.user.avatar.present? %>
+            <div class="card-author">
+              <img src=<%= cl_image_tag follow.user.avatar.key %> />
+            </div>
+          <% end %>
         </article><br>
       <% end %>
     </section>

@@ -12,7 +12,9 @@
       <% if current_user == beat.user %>
         <% beat.comments.each do |comment| %>
           <div class="comment">
-            <%= link_to (image_tag comment.user.image), "/users/#{beat.user.id}" %>
+            <% if comment.user.avatar.present? %>
+                <%= link_to(cl_video_tag comment.user.avatar.key, "/users/#{beat.user.id}") %>
+            <% end %>
             <p class="dropbtn"><%= link_to comment.user.username, "/users/#{comment.user.id}" %><p>
             <p class="comment-description"><%= comment.description %></p>
             <form method="get" action=<%="/beats/#{@beat.id}/comments/#{comment.id}/destroy"%>>
@@ -25,7 +27,9 @@
         <% beat.comments.each do |comment| %>
           <% if comment.user == current_user %>
             <div class="comment">
-              <%= link_to (image_tag comment.user.image), "/users/#{beat.user.id}" %>
+              <% if comment.user.avatar.present? %>
+                  <%= link_to(cl_video_tag comment.user.avatar.key, "/users/#{beat.user.id}") %>
+              <% end %>
               <p class="dropbtn"><%= link_to comment.user.username, "/users/#{comment.user.id}" %><p>
               <p class="comment-description"><%= comment.description %></p>
               <form method="get" action=<%="/beats/#{@beat.id}/comments/#{comment.id}/destroy"%>>

@@ -28,9 +28,11 @@
             </h5>
           </header>
 
-          <audio class='audio' controls>
-            <source src=<%= cl_video_tag beat.audio_file.key %>/>
-          </audio>
+          <% if beat.audio_file.present? %>
+            <audio class='audio' controls>
+              <source src=<%= cl_video_tag beat.audio_file.key %>/>
+            </audio>
+          <% end %>
 
           <div class="info">
             <form action=<%="/users/#{beat.user.id}"%> method="get">

@@ -48,7 +48,9 @@
           </header>
 
           <audio class='audio' controls>
+            <% if beat.audio_file.present? %>
             <source src=<%= cl_video_tag beat.audio_file.key %>/>
+            <% end %>
           </audio>
 
           <div class="info">

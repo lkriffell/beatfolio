@@ -15,9 +15,13 @@
                 <p>Creator: <%= like.beat.user.username %></p>
               </div>
 
-              <audio class='audio' controls>
-                <source src=<%=like.beat.audio.url%>/>
-              </audio>
+              <% if like.beat.audio_file.present? %>
+                <div class="card-author">
+                  <audio class='audio' controls>
+                    <source src=<%= cl_video_tag like.beat.audio_file.key%>/>
+                  </audio>
+                </div>
+              <% end %>
             </article>
           <% end %>
       </section>
