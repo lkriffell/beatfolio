@@ -1,14 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'beat' do
-  before :each do 
-    Beat.delete_all
-    user = User.find_by(email: "BillJ@gmail.com")
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-  end
-
   describe 'happy paths' do
     it 'can be created' do
+      Beat.delete_all
+      user = User.find_by(email: "BillJ@gmail.com")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       
       visit '/beats/new'
 
@@ -34,14 +31,15 @@ RSpec.describe 'beat' do
   end
   describe 'sad paths' do
     it 'cannot be created without being logged in' do
-      click_link "Log Out"
-
       visit '/beats/new'
 
       expect(current_path).to eq("/login")
     end
 
     it 'cannot be created without name' do
+      user = User.find_by(email: "BillJ@gmail.com")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
       visit '/beats/new'
 
       fill_in 'beat_tags', with: 'cool, hip, hop, rap'
