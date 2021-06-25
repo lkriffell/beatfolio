@@ -15,7 +15,7 @@
           </header>
           <% if follow.user.avatar.present? %>
             <div class="card-author">
-              <img src=<%= cl_image_tag user.avatar.key %> />
+              <img src=<%= cl_image_tag follow.user.avatar.key %> />
             </div>
           <% end %>
         </article><br>
