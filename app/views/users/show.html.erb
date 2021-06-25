@@ -1,72 +1,72 @@
 <% if @user %>
-<div class="profile">
-  <% if @user.avatar.attached? %>
-    <%= cl_image_tag(@user.avatar.key, :height=>200, :width=>200) %><br>
-  <% else %>
-    <%= image_tag("blank.png", :height=>200, :width=>200) %><br>
-  <% end %>
-  <ul>
-    <h2><%= @user.username %></h2>
-    <% if @own_page %>
-      <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %></li>
-      <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following"  %></li>
-    <% elsif @following %>
-      <form action=<%"/users/#{@user.id}/unfollow"%> method="get">
-        <button class="btn" type="submit">Unfollow</button>
-      </form>
-      <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %></li> 
-      <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following" %></li>
+  <div class="profile">
+    <% if @user.avatar.attached? %>
+      <%= cl_image_tag(@user.avatar.key, :height=>200, :width=>200) %><br>
     <% else %>
-      <form action=<%"/users/#{@user.id}/follow"%> method="get">
-        <button class="btn" type="submit">Follow</button>
-      </form>
-      <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %></li>
-      <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following" %></li>
+      <%= image_tag("blank.png", :height=>200, :width=>200) %><br>
     <% end %>
-    <li>Liked Tracks: <%= link_to @like_count, "/users/#{@user.id}/likes" %></li>
-    <li>Comments: <%= link_to @comment_count, "/users/#{@user.id}/comments" %></li>
-    <li>Tracks Uploaded: <%= @user.beats.size %></li>
-    <li>Member Since: <%= @user.created_at.strftime("%B %d %Y") %></li>
-  </ul>
-</div>
+    <ul>
+      <h2><%= @user.username %></h2>
+      <% if @own_page %>
+        <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %></li>
+        <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following"  %></li>
+      <% elsif @following %>
+        <form action=<%="/users/#{@user.id}/unfollow"%>>
+          <button class="btn" type="submit">Unfollow</button>
+        </form>
+        <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %></li> 
+        <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following" %></li>
+      <% else %>
+        <form action=<%="/users/#{@user.id}/follow"%>>
+          <button class="btn" type="submit">Follow</button>
+        </form>
+        <li>Followers: <%= link_to @follower_count, "/users/#{@user.id}/followers" %></li>
+        <li>Following: <%= link_to @following_count, "/users/#{@user.id}/following" %></li>
+      <% end %>
+      <li>Liked Tracks: <%= link_to @like_count, "/users/#{@user.id}/likes" %></li>
+      <li>Comments: <%= link_to @comment_count, "/users/#{@user.id}/comments" %></li>
+      <li>Tracks Uploaded: <%= @user.beats.size %></li>
+      <li>Member Since: <%= @user.created_at.strftime("%B %d %Y") %></li>
+    </ul>
+  </div>
 
-<center>
-  <% if @user.beats %>
-    <section class="feed-card-title">
-    <h3><%= @user.username %>'s Tracks </h3>
-    </section><br>
-    <section class="profile-tracks">
-    <% @user.beats.each do |beat| %><br>
-        <article class="disabled-hover-card">
-          <header class="card-header">
-            <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
-            <h5>
-              <form action=<%="/beats/#{beat.id}"%> method="get">
-                <button class="dropbtn logo" type="submit"><%= beat.name %></button>
-              </form>
-            </h5>
-          </header>
+  <center>
+    <% if @user.beats %>
+      <section class="feed-card-title">
+      <h3><%= @user.username %>'s Tracks </h3>
+      </section><br>
+      <section class="profile-tracks">
+      <% @user.beats.each do |beat| %><br>
+          <article class="disabled-hover-card">
+            <header class="card-header">
+              <p><%= beat.created_at.strftime("%B %d, %Y") %></p>
+              <h5>
+                <form action=<%="/beats/#{beat.id}"%> method="get">
+                  <button class="dropbtn logo" type="submit"><%= beat.name %></button>
+                </form>
+              </h5>
+            </header>
 
-          <audio class='audio' controls>
             <% if beat.audio_file.present? %>
-            <source src=<%= cl_video_tag beat.audio_file.key %>/>
+              <audio class='audio' controls>
+                <source src=<%= cl_video_tag beat.audio_file.key %>/>
+              </audio>
             <% end %>
-          </audio>
 
-          <div class="info">
-            <form action=<%="/users/#{beat.user.id}"%> method="get">
-              <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
-            </form>
-            <p class="card-text"><%= beat.description %></p>
-            <p class="card-text">Comments: <%= beat.comments.size %></p>
-          </div>
+            <div class="info">
+              <form action=<%="/users/#{beat.user.id}"%> method="get">
+                <p><button class="dropbtn logo" type="submit">Creator: <%= beat.user.username %></button></p>
+              </form>
+              <p class="card-text"><%= beat.description %></p>
+              <p class="card-text">Comments: <%= beat.comments.size %></p>
+            </div>
 
-          <%= render :partial => './partials/like_button', :locals => {:beat => beat} %>
-          <%= render :partial => './partials/beat_tags', :locals => {:beat => beat} %>
-          <br>
-        </article>
-    <% end %><br>
-    </section>
-  <% end %>
-</center>
+            <%= render :partial => './partials/like_button', :locals => {:beat => beat} %>
+            <%= render :partial => './partials/beat_tags', :locals => {:beat => beat} %>
+            <br>
+          </article>
+      <% end %><br>
+      </section>
+    <% end %>
+  </center>
 <% end %>
