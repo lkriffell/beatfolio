@@ -5,7 +5,6 @@ class CreateBeats < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :image
       t.string :description
-      t.attachment :audio
 
       t.timestamps
     end

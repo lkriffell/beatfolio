@@ -48,10 +48,6 @@ ActiveRecord::Schema.define(version: 2021_06_21_210445) do
     t.string "name"
     t.string "image"
     t.string "description"
-    t.string "audio_file_name"
-    t.string "audio_content_type"
-    t.integer "audio_file_size"
-    t.datetime "audio_updated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
