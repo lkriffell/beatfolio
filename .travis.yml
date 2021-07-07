@@ -1,17 +1,17 @@
 language: ruby
 rbenv:
-  - 3.0.1
+- 3.0.1
 services:
-  - postgresql
+- postgresql
 script:
-  - bundle install
-  - npm install
-  - bundle exec rails db:{create,migrate,seed} RAILS_ENV=test
-  - bundle exec rspec
+- bundle install
+- npm install
+- bundle exec rails db:{create,migrate,seed} RAILS_ENV=test
+- bundle exec rspec
 deploy:
   provider: heroku
   api_key:
-    secure: CPkqHTjLFTXD/ZQvXynudpn6vdwy/GXyFzLQoGKCsgjVkFPBxxsMMHPMhJXTvXjAestih/qNUW7EQE11UdkcS2vmsp1GXmwGUNzO1nisGS0qN0yGeYedccTOWwvugPLIXim5CuGeYsGGWLp6tCtc0oS3kjrVZmOSBX14bPjiRZ7Jy/5O5sgdv7E1kauFyhVNs+P5HlbGDOY6o2gcM9XUKWCmflt3x7Lv3QMQaXQKHcRpcBfDZxpzuMiPwooXEbUj0OpfHZhrnntiN3QL7/QexL6LuLpoIdUmOqcgUp72o7KmHYZescjVzKIBbvgCswZKtdeFoTRJu8Y+127RXdE28a9b2gBIKP6bI8ntWcALQ0PWEufGnekTpd3kSeDdsr0ku/DEzenMb98graCqDNdRu7DEXD5t+9QNWIiPJzU8tdnZAPOWz5qvl1Rd+aXOecMFUPMgsl2xLhMgUdegj+HnNeOd6OQowag9s5JN5x+SnqWnQva+Ai8FxtwkmqYVBqrVOc7etIic9CeVE+Uk5bmzZeHBQOeeSmI2x0VOZQEtQ9D/IeTPqEfH9DNVyi1wYuWeNEtuuer99XuRoBPrGgbMU1Ecpapjz1POjQfAMAjXy6wFte1V/HpnTijDULGViiAKoL53wMzoUascf1j2eeyLw/UAexAlywNcq0g+vuZP5CM=
+    secure: BX4q8AsGHlRsXP5/xJn71+xebqEPXVO0gkjmJDZkUu7+9NnF47xy3V1D9gvI2sVl4aVc5SC1cuQSxfT67+8y7ZcmP5d/TOcHz3GXDz2zvplTLqrj77Q3/AILz1+wK8WMpS+BOoX/NvtGKiue4HtiS7MMt1+JAK7alBdec+djYC4fddX1qEbw3q4+dWCQvIRwGatrZnw0fhrk2YOYeKvNCo/8Yws8oLQPR0dxrxbXedGiMdxH6i8i6RjJ54U9berop4nAjxcqOfLTEt/CONv+His/cGA/fXR0EtjplHZAFb/1Grzwa7Av0zCCHpVC9/OKaWYss/E8Pr+WnH5HKViecmh+c3b5dLPDErZ+nlwRmgqRT/JjAagfeWyTNjD6TlFcQC5NVEj/RYtCgK0EajbKsfgidyt8RDwGgb38ix+ui1CqTL4GvR7sxrbljE6Rz4CtUw3KftbKL5pcE6vf9y0eaxdGqdDdeLTFNJEX1emeP6uaey5kv/puk6fmSIztbxQ0pcWJYMTpow+m5pTktVxw3jx5ryNq2hsN04eLir0/ZHqELjaTCqzJ7o5Y8QXE5aqvcDzj7/ETNjB5freh7/p8EyTFJ31pmxp6FEePdpcXIMTr0bwydKg2V/Lp2iYTYDglAXLiFTUjQFCm00s2pWR8TKHZvMqyxka16QcFxfYChYU=
   app: beatfolio
   on:
     repo: lkriffell/beatfolio
@@ -21,4 +21,4 @@ notifications:
     on_success: never
     on_failure: never
 cache:
-  - bundler
+- bundler
