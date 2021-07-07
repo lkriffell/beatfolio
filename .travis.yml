@@ -8,6 +8,7 @@ script:
 - npm install
 - bundle exec rails db:{create,migrate,seed} RAILS_ENV=test
 - bundle exec rspec
+- bundle exec rake assets:precompile
 deploy:
   provider: heroku
   api_key:
